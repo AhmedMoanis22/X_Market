@@ -47,9 +47,5 @@
 		<true/>
 		<key>UIStatusBarHidden</key>
 		<false/>
-		<key>NSAppleMusicUsageDescription</key>
-		<string>We need access to your Apple Music library to provide personalized music recommendations.</string>
-		<key>NSAppleIDUsageDescription</key>
-		<string>We need access to your Apple ID to provide personalized services.</string>
 	</dict>
 </plist>

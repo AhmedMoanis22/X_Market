@@ -1,5 +1,5 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomLoginWidget extends StatelessWidget {
   const CustomLoginWidget({super.key});
@@ -8,159 +8,141 @@ class CustomLoginWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        return Column(
-          children: [
-            Container(
-              width: 200,
-              height: 20,
-              alignment: Alignment.center,
-              child: const Text(
-                '!أهلا بيك في ماركت إكس',
-                style: TextStyle(
+        return SingleChildScrollView(
+          child: Positioned(
+
+            child: Column(
+              children: [
+                const CustomText(
+                  text: '!أهلا بيك في ماركت إكس',
                   color: Colors.black,
                   fontSize: 18,
-                  fontFamily: 'IBM Plex Sans Arabic',
                   fontWeight: FontWeight.w700,
-                  height: 1.0, // line-height: 100%
-                  letterSpacing: 0.0,
                 ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            const SizedBox(height: 20), // مسافة بين النصين
-            Container(
-              width: 166,
-              height: 21,
-              alignment: Alignment.center,
-              child: const Text(
-                'التسجيل من خلال جوجل أو أبل',
-                style: TextStyle(
+                const SizedBox(height: 20),
+                const CustomText(
+                  text: 'التسجيل من خلال جوجل أو أبل',
                   color: Color(0xFF666666),
                   fontSize: 14,
-                  fontFamily: 'IBM Plex Sans Arabic',
                   fontWeight: FontWeight.w400,
-                  height: 1.0, // line-height: 100%
-                  letterSpacing: 0.0,
                 ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            const SizedBox(height: 20), // مسافة بين النصوص والأزرار
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.8, // عرض متجاوب
-              height: 56,
-              child: Stack(
-                children: [
-                  Positioned(
-                    left: 0,
-                    top: 0,
-                    child: Container(
-                      width: MediaQuery.of(context).size.width * 0.8, // عرض متجاوب
-                      height: 56,
-                      decoration: ShapeDecoration(
-                        color: const Color(0xFF030303),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
+                const SizedBox(height: 20),
+                const CustomButton(
+                  text: 'التسجيل باستخدام أبل',
+                  color: Color(0xFF030303),
+                  imagePath: 'assets/images/apple.png',
+                ),
+                const SizedBox(height: 20),
+                const CustomButton(
+                  text: 'التسجيل باستخدام جوجل',
+                  color: Color(0xFF3C84F4),
+                  imagePath: 'assets/images/google.png',
+                ),
+                const SizedBox(height: 20),
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  decoration: const ShapeDecoration(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                        width: 1,
+                        strokeAlign: BorderSide.strokeAlignCenter,
+                        color: Color(0xFFB3B3B3),
                       ),
                     ),
                   ),
-                  Positioned(
-                    left: 90,
-                    top: 15,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const Text(
-                          'التسجيل باستخدام أبل',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontFamily: 'IBM Plex Sans Arabic',
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        const SizedBox(width: 12), // مسافة بين النص والأيقونة
-                        SvgPicture.asset(
-                          'assets/icons/apple.svg', // مسار الأيقونة
-                          width: 24,
-                          height: 24,
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 20), // مسافة بين الأزرار
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.8, // عرض متجاوب
-              height: 56,
-              child: Stack(
-                children: [
-                  Positioned(
-                    left: 0,
-                    top: 0,
-                    child: Container(
-                      width: MediaQuery.of(context).size.width * 0.8, // عرض متجاوب
-                      height: 56,
-                      decoration: ShapeDecoration(
-                        color: const Color(0xFF3C84F4),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    left: 80,
-                    top: 15,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const Text(
-                          'التسجيل باستخدام جوجل',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontFamily: 'IBM Plex Sans Arabic',
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        const SizedBox(width: 12), // مسافة بين النص والأيقونة
-                        SvgPicture.asset(
-                          'assets/icons/google.svg', // مسار الأيقونة
-                          width: 24,
-                          height: 24,
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 20), // مسافة بين الأزرار
-            Container(
-              width: MediaQuery.of(context).size.width * 0.8, // Responsive width
-              decoration: const ShapeDecoration(
-                shape: RoundedRectangleBorder(
-                  side: BorderSide(
-                    width: 1,
-                    strokeAlign: BorderSide.strokeAlignCenter,
-                    color: Color(0xFFB3B3B3),
-                  ),
                 ),
-              ),
+              ],
             ),
-          ],
+          ),
         );
       },
+    );
+  }
+}
+
+class CustomText extends StatelessWidget {
+  final String text;
+  final Color color;
+  final double fontSize;
+  final FontWeight fontWeight;
+
+  const CustomText({
+    required this.text,
+    required this.color,
+    required this.fontSize,
+    required this.fontWeight,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 200,
+      child: Text(
+        text,
+        style: TextStyle(
+          color: color,
+          fontSize: fontSize,
+          fontFamily: 'IBM Plex Sans Arabic',
+          fontWeight: fontWeight,
+          height: 1.0,
+          letterSpacing: 0.0,
+        ),
+        textAlign: TextAlign.center,
+      ),
+    );
+  }
+}
+
+class CustomButton extends StatelessWidget {
+  final String text;
+  final Color color;
+  final String imagePath;
+
+  const CustomButton({
+    super.key,
+    required this.text,
+    required this.color,
+    required this.imagePath,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width * 0.8,
+      height: 56,
+      child: Container(
+        width: MediaQuery.of(context).size.width * 0.8,
+        height: 56,
+        decoration: ShapeDecoration(
+          color: color,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+        alignment: Alignment.center,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              text,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontFamily: 'IBM Plex Sans Arabic',
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            const SizedBox(width: 12),
+            Image.asset(
+              imagePath,
+              width: 24,
+              height: 24,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

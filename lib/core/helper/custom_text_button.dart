@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:x_market/core/theme/colors.dart';
+import '../theme/colors.dart';
 
 class CustomTextButton extends StatelessWidget {
   const CustomTextButton(
-      {super.key, required this.onPressed, required this.text, this.style});
+      {super.key, required this.onPressed, required this.text, this.style, required Row child});
   final void Function() onPressed;
   final String text;
   final TextStyle? style;

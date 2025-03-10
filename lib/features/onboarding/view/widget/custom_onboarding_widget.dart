@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:x_market/features/login/view/screen/login_screen.dart';
+import 'package:x_market/core/routing/app_routes_name.dart';
 import 'package:x_market/features/onboarding/data/model/onboarding_model.dart';
 import '../../../../core/theme/colors.dart';
 import 'custom_item_onboarding_widget.dart';
@@ -77,7 +77,7 @@ class _CustomOnboardingWidgetState extends State<CustomOnboardingWidget> {
               TextButton(
                 onPressed: () {
                   if (currentIndex == onboardingList.length - 1) {
-                    Get.to(() => const LoginScreen());
+                    Get.toNamed(AppRoutesName.login_in);
                   } else {
                     _controller.nextPage(
                       duration: const Duration(milliseconds: 500),

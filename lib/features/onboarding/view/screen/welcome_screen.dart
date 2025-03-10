@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/helper/custom_text_button.dart';
-import '../../../../core/routhing/app_routes_name.dart';
+import '../../../../core/routing/app_routes_name.dart';
 import '../../../../core/theme/colors.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -71,6 +71,12 @@ class WelcomeScreen extends StatelessWidget {
                   Get.toNamed(AppRoutesName.onBoarding);
                 },
                 text: 'خلينا نبدأ!',
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('خلينا نبدأ!'),
+                  ],
+                ),
               ),
               const SizedBox(height: 20),
             ],
