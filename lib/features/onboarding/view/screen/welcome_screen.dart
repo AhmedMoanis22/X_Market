@@ -66,16 +66,19 @@ class WelcomeScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 40),
-              CustomTextButton(
-                onPressed: () {
-                  Get.toNamed(AppRoutesName.onBoarding);
-                },
-                text: 'خلينا نبدأ!',
-                child: const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('خلينا نبدأ!'),
-                  ],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: CustomTextButton(
+                  onPressed: () {
+                    Get.toNamed(AppRoutesName.onBoarding);
+                  },
+                  text: 'خلينا نبدأ!',
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('خلينا نبدأ!'),
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(height: 20),
