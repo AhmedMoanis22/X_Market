@@ -9,33 +9,38 @@ class CustomItemOnboardingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Get the screen width and height
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 40),
+      padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1), // 10% of screen width
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
-            width: 250,
-            height: 250,
             onboardingModel.image,
+            width: screenWidth * 0.6, // 60% of screen width
+            height: screenWidth * 0.6, // 60% of screen width
           ),
-          const SizedBox(height: 80),
+          SizedBox(height: screenHeight * 0.1), // 10% of screen height
           Text(
             onboardingModel.title,
-            style: const TextStyle(
-              fontSize: 24,
+            style: TextStyle(
+              fontSize: screenWidth * 0.06, // 6% of screen width
               fontFamily: 'IBMPLEXSANSARABICBold',
               color: AppColors.primaryGreen,
             ),
             textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 15),
+          SizedBox(height: screenHeight * 0.02), // 2% of screen height
           Text(
             onboardingModel.description,
-            style: const TextStyle(
-                fontSize: 14,
-                fontFamily: 'IBMPLEXSANSARABICBold',
-                color: Colors.grey),
+            style: TextStyle(
+              fontSize: screenWidth * 0.035, // 3.5% of screen width
+              fontFamily: 'IBMPLEXSANSARABICBold',
+              color: Colors.grey,
+            ),
             textAlign: TextAlign.center,
           ),
         ],

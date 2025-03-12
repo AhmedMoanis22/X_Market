@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 import '../../../../core/helper/custom_text_button.dart';
+import '../../../../core/routing/app_routes_name.dart';
 import '../../../../core/theme/colors.dart';
 
 class EmailAndPassword extends StatefulWidget {
   const EmailAndPassword({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _EmailAndPasswordState createState() => _EmailAndPasswordState();
 }
 
@@ -151,7 +154,9 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.toNamed(AppRoutesName.sign_up);
+                  },
                   child: const Text(
                     'أنشأ حساب الآن',
                     style: TextStyle(

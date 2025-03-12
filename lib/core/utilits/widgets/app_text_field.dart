@@ -20,6 +20,7 @@ class AppTextField extends StatefulWidget {
   final TextInputType keyboardType;
 
   @override
+  // ignore: library_private_types_in_public_api
   _AppTextFieldState createState() => _AppTextFieldState();
 }
 
