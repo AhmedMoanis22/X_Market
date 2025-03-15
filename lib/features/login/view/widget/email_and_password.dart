@@ -66,9 +66,9 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
                 hintStyle: TextStyle(
                     color: Colors.grey.shade400,
                     fontFamily: 'IBMPLEXSANSARABICSRegular'),
-                suffixIcon: const Padding(
-                  padding: EdgeInsets.all(12),
-                  child: Icon(Icons.mail_outline, color: Colors.black),
+                suffixIcon: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: SvgPicture.asset('assets/icons/sms.svg'),
                 ),
               ),
               validator: (value) {
@@ -115,16 +115,18 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
                     fontFamily: 'IBMPLEXSANSARABICSRegular'),
                 suffixIcon: Padding(
                   padding: const EdgeInsets.all(13.0),
-                  child: SvgPicture.asset(
-                    'assets/icons/lock.svg',
-                  ),
+                  child: SvgPicture.asset('assets/icons/lock.svg'),
                 ),
-                prefixIcon: IconButton(
-                  icon: Icon(
-                    _obscureText ? Icons.visibility_off : Icons.visibility,
-                    color: Colors.grey,
+                prefixIcon: GestureDetector(
+                  onTap: _togglePasswordVisibility,
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: SvgPicture.asset(
+                      _obscureText
+                          ? 'assets/icons/eye_slash.svg'
+                          : 'assets/icons/vector.svg',
+                    ),
                   ),
-                  onPressed: _togglePasswordVisibility,
                 ),
               ),
               validator: (value) {
@@ -155,7 +157,7 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
               children: [
                 TextButton(
                   onPressed: () {
-                    Get.toNamed(AppRoutesName.sign_up);
+                    Get.toNamed(AppRoutesName.sign_up_with_email);
                   },
                   child: const Text(
                     'أنشأ حساب الآن',
@@ -189,12 +191,6 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
                 }
               },
               text: 'تسجيل الدخول',
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('تسجيل الدخول'),
-                ],
-              ),
             ),
           ],
         ),

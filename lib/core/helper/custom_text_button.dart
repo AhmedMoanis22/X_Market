@@ -4,11 +4,7 @@ import '../theme/colors.dart';
 
 class CustomTextButton extends StatelessWidget {
   const CustomTextButton(
-      {super.key,
-      required this.onPressed,
-      required this.text,
-      this.style,
-      required Row child});
+      {super.key, required this.onPressed, required this.text, this.style});
   final void Function() onPressed;
   final String text;
   final TextStyle? style;

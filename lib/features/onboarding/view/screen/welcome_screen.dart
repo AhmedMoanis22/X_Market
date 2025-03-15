@@ -73,12 +73,6 @@ class WelcomeScreen extends StatelessWidget {
                     Get.toNamed(AppRoutesName.onBoarding);
                   },
                   text: 'خلينا نبدأ!',
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text('خلينا نبدأ!'),
-                    ],
-                  ),
                 ),
               ),
               const SizedBox(height: 20),
