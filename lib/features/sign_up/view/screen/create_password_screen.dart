@@ -36,125 +36,134 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
   @override
   Widget build(BuildContext context) {
     bool isPinComplete = enteredPin.length == pinLength;
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       appBar: const CustomAppBar(),
-      body: Center(
-        child: Column(
-          children: [
-            const SizedBox(height: 50),
-            Image.asset('assets/images/lock.png'),
-            const SizedBox(height: 25),
-            const Text(
-              'انشاء كلمة مرور سريعة',
-              style: TextStyle(
-                fontSize: 18,
-                fontFamily: 'IBMPLEXSANSARABICBold',
-              ),
-            ),
-            const SizedBox(height: 10),
-            const Text(
-              'عشان تسجل بيها كل مرة تفتح التطبيق',
-              style: TextStyle(
-                fontSize: 14,
-                fontFamily: 'IBMPLEXSANSARABICSRegular',
-              ),
-            ),
-            const SizedBox(height: 25),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                pinLength,
-                (index) => Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 5),
-                  width: 12,
-                  height: 12,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: index < enteredPin.length
-                        ? Colors.green
-                        : Colors.grey.shade300,
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 15),
-            Expanded(
-              child: GridView.builder(
-                itemCount: 12,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  mainAxisSpacing: 16,
-                  crossAxisSpacing: 10,
-                  childAspectRatio: 1.5,
-                ),
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  if (index == 9) return const SizedBox();
-                  if (index == 11) {
-                    return _buildKey("", _onDeletePressed, Icons.backspace);
-                  }
-                  return _buildKey(
-                    (index == 10) ? "0" : "${index + 1}",
-                    () =>
-                        _onNumberPressed((index == 10) ? "0" : "${index + 1}"),
-                  );
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: BlocBuilder<SignUpCubit, double>(
-                builder: (context, progress) {
-                  return LinearProgressIndicator(
-                    value: progress,
-                    backgroundColor: Colors.grey[300],
-                    valueColor:
-                        const AlwaysStoppedAnimation<Color>(Colors.green),
-                  );
-                },
-              ),
-            ),
-            const SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              child: Container(
-                width: double.infinity,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: isPinComplete
-                      ? AppColors.primaryGreen
-                      : Colors.grey.shade300,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: TextButton(
-                  onPressed: isPinComplete
-                      ? () {
-                          context.read<SignUpCubit>().updateProgress(0.4);
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => BlocProvider.value(
-                                value: context.read<SignUpCubit>(),
-                                child: const ConfirmPasswordScreen(),
-                              ),
-                            ),
-                          );
-                        }
-                      : null,
-                  child: const Text(
-                    'التالي',
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return SingleChildScrollView(
+            child: Center(
+              child: Column(
+                children: [
+                  SizedBox(height: screenHeight * 0.05),
+                  Image.asset('assets/images/lock.png', width: screenWidth * 0.3),
+                  SizedBox(height: screenHeight * 0.03),
+                  const Text(
+                    'انشاء كلمة مرور سريعة',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 18,
                       fontFamily: 'IBMPLEXSANSARABICBold',
-                      color: Colors.white,
                     ),
                   ),
-                ),
+                  SizedBox(height: screenHeight * 0.01),
+                  const Text(
+                    'عشان تسجل بيها كل مرة تفتح التطبيق',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontFamily: 'IBMPLEXSANSARABICSRegular',
+                    ),
+                  ),
+                  SizedBox(height: screenHeight * 0.03),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(
+                      pinLength,
+                      (index) => Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 5),
+                        width: screenWidth * 0.03,
+                        height: screenWidth * 0.03,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: index < enteredPin.length
+                              ? Colors.green
+                              : Colors.grey.shade300,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: screenHeight * 0.02),
+                  GridView.builder(
+                    shrinkWrap: true,
+                    itemCount: 12,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      mainAxisSpacing: screenHeight * 0.02,
+                      crossAxisSpacing: screenWidth * 0.03,
+                      childAspectRatio: screenWidth / (screenHeight / 2),
+                    ),
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      if (index == 9) return const SizedBox();
+                      if (index == 11) {
+                        return _buildKey("", _onDeletePressed, Icons.backspace);
+                      }
+                      return _buildKey(
+                        (index == 10) ? "0" : "${index + 1}",
+                        () =>
+                            _onNumberPressed((index == 10) ? "0" : "${index + 1}"),
+                      );
+                    },
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
+                    child: BlocBuilder<SignUpCubit, double>(
+                      builder: (context, progress) {
+                        return LinearProgressIndicator(
+                          value: progress,
+                          backgroundColor: Colors.grey[300],
+                          valueColor:
+                              const AlwaysStoppedAnimation<Color>(Colors.green),
+                        );
+                      },
+                    ),
+                  ),
+                  SizedBox(height: screenHeight * 0.01),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: screenWidth * 0.04, vertical: screenHeight * 0.01),
+                    child: Container(
+                      width: double.infinity,
+                      height: screenHeight * 0.07,
+                      decoration: BoxDecoration(
+                        color: isPinComplete
+                            ? AppColors.primaryGreen
+                            : Colors.grey.shade300,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: TextButton(
+                        onPressed: isPinComplete
+                            ? () {
+                                context.read<SignUpCubit>().updateProgress(0.4);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => BlocProvider.value(
+                                      value: context.read<SignUpCubit>(),
+                                      child: const ConfirmPasswordScreen(),
+                                    ),
+                                  ),
+                                );
+                              }
+                            : null,
+                        child: const Text(
+                          'التالي',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: 'IBMPLEXSANSARABICBold',
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: screenHeight * 0.02), // Add some space at the bottom
+                ],
               ),
             ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }

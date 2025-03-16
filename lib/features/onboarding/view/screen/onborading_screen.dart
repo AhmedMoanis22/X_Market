@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import '../../../../core/utilits/widgets/custom_appbar.dart';
+import 'package:x_market/core/utilits/widgets/custom_appbar.dart';
 import '../widget/custom_onboarding_widget.dart';
 
 class OnboradingScreen extends StatelessWidget {

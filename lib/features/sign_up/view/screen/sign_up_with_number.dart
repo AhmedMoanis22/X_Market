@@ -1,0 +1,131 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/helper/custom_text_button.dart';
+import '../../../../core/utilits/widgets/custom_appbar.dart';
+import '../../bussiness_logic/Sign_up/sign_up_cubit.dart';
+import '../widget/sign_up_in_marketx_title.dart';
+
+class SignUpWithNumber extends StatefulWidget {
+  const SignUpWithNumber({super.key});
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _SignUpWithNumberState createState() => _SignUpWithNumberState();
+}
+
+class _SignUpWithNumberState extends State<SignUpWithNumber> {
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController dobController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+      appBar: const CustomAppBar(),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SignUpInMarketxTitle(),
+                  const SizedBox(height: 20),
+                  TextFormField(
+                    controller: phoneController,
+                    keyboardType: TextInputType.phone,
+                    decoration: InputDecoration(
+                      labelText: "رقم الموبايل",
+                      hintText: "اكتب موبايلك الشخصي",
+                      prefixIcon: const Icon(Icons.phone),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "يجب إدخال رقم الهاتف";
+                      }
+                      // ignore: curly_braces_in_flow_control_structures
+                      else if (value.length < 5 || value.length > 12) {
+                        return "خطأ في رقم الموبايل";
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 20),
+                  TextFormField(
+                    controller: dobController,
+                    readOnly: true,
+                    decoration: InputDecoration(
+                      labelText: "تاريخ الميلاد",
+                      hintText: "حدد يوم ميلادك",
+                      prefixIcon: const Icon(Icons.calendar_today),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    onTap: () async {
+                      DateTime? pickedDate = await showDatePicker(
+                        context: context,
+                        initialDate: DateTime(2000),
+                        firstDate: DateTime(1900),
+                        lastDate: DateTime.now(),
+                      );
+                      if (pickedDate != null) {
+                        setState(() {
+                          dobController.text =
+                              "${pickedDate.day}/${pickedDate.month}/${pickedDate.year}";
+                        });
+                      }
+                    },
+                  ),
+                SizedBox(height: 400.h),
+Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20.h),
+                  child: Column(
+                    children: [
+                      BlocBuilder<SignUpCubit, double>(
+                        builder: (context, progress) {
+                          return LinearProgressIndicator(
+                            value: progress,
+                            backgroundColor: Colors.grey[300],
+                            valueColor: const AlwaysStoppedAnimation<Color>(
+                                Colors.green),
+                          );
+                        },
+                      ),
+                      const SizedBox(height: 5),
+                      CustomTextButton(
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            context.read<SignUpCubit>().updateProgress(0.6);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => BlocProvider.value(
+                                  value: context.read<SignUpCubit>(),
+                                  child: const SignUpWithNumber(),
+                                ),
+                              ),
+                            );
+                          }
+                        },
+                        text: 'التالي',
+                      ),
+                    ],
+                  ),
+                ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
 import 'core/routing/app_routes_configurations.dart';
 import 'features/sign_up/bussiness_logic/Sign_up/sign_up_cubit.dart';
 import 'splash_screen.dart';

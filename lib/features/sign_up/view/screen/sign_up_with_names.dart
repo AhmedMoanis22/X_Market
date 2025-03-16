@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/helper/custom_text_button.dart';
 import '../../../../core/utilits/widgets/custom_appbar.dart';
@@ -25,22 +24,24 @@ class SignUpWithNames extends StatelessWidget {
       appBar: const CustomAppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
+          padding: EdgeInsets.symmetric(horizontal: 24.w),
           child: Form(
             key: formKey,
             child: Column(
               children: [
+                SizedBox(height: 40.h),
                 const SignUpInMarketxTitle(),
-                const SizedBox(height: 24),
-                const CustomTextForIdentification(text: 'الاسم الأول'),
-                const SizedBox(height: 5),
+                SizedBox(height: 20.h),
+                const CustomTextForIdentification(
+                  text: "الاسم الأول",
+                ),
+                SizedBox(height: 8.h),
                 TextFormField(
                   controller: firstNameController,
                   textAlign: TextAlign.right,
                   style: const TextStyle(
                     fontFamily: 'IBMPLEXSANSARABICBold',
                   ),
-                  keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     contentPadding:
                         EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
@@ -53,7 +54,7 @@ class SignUpWithNames extends StatelessWidget {
                       borderSide:
                           const BorderSide(width: 1.5, color: Colors.grey),
                     ),
-                    hintText: 'اكتب اسمك الأول زي البطاقة',
+                    hintText: "اكتب الاسم الأول",
                     hintStyle: TextStyle(
                       color: Colors.grey.shade400,
                       fontFamily: 'IBMPLEXSANSARABICSRegular',
@@ -61,20 +62,20 @@ class SignUpWithNames extends StatelessWidget {
                   ),
                   validator: (value) {
                     if (value!.isEmpty) return "يجب إدخال الاسم الأول";
-
                     return null;
                   },
                 ),
-                const SizedBox(height: 16),
-                const CustomTextForIdentification(text: 'الاسم الأوسط'),
-                const SizedBox(height: 5),
+                SizedBox(height: 20.h),
+                const CustomTextForIdentification(
+                  text: "الاسم الثاني",
+                ),
+                SizedBox(height: 8.h),
                 TextFormField(
                   controller: secondNameController,
                   textAlign: TextAlign.right,
                   style: const TextStyle(
                     fontFamily: 'IBMPLEXSANSARABICBold',
                   ),
-                  keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     contentPadding:
                         EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
@@ -87,28 +88,28 @@ class SignUpWithNames extends StatelessWidget {
                       borderSide:
                           const BorderSide(width: 1.5, color: Colors.grey),
                     ),
-                    hintText: 'اكتب اسمك الأوسط زي البطاقة',
+                    hintText: "اكتب الاسم الثاني",
                     hintStyle: TextStyle(
                       color: Colors.grey.shade400,
                       fontFamily: 'IBMPLEXSANSARABICSRegular',
                     ),
                   ),
                   validator: (value) {
-                    if (value!.isEmpty) return "يجب إدخال الاسم الأوسط";
-
+                    if (value!.isEmpty) return "يجب إدخال الاسم الثاني";
                     return null;
                   },
                 ),
-                const SizedBox(height: 16),
-                const CustomTextForIdentification(text: 'اسم العائلة'),
-                const SizedBox(height: 5),
+                SizedBox(height: 20.h),
+                const CustomTextForIdentification(
+                  text: "الاسم الأخير",
+                ),
+                SizedBox(height: 8.h),
                 TextFormField(
                   controller: lastNameController,
                   textAlign: TextAlign.right,
                   style: const TextStyle(
                     fontFamily: 'IBMPLEXSANSARABICBold',
                   ),
-                  keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     contentPadding:
                         EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
@@ -121,58 +122,54 @@ class SignUpWithNames extends StatelessWidget {
                       borderSide:
                           const BorderSide(width: 1.5, color: Colors.grey),
                     ),
-                    hintText: 'اكتب اسم العائلة زي البطاقة',
+                    hintText: "اكتب الاسم الأخير",
                     hintStyle: TextStyle(
                       color: Colors.grey.shade400,
                       fontFamily: 'IBMPLEXSANSARABICSRegular',
                     ),
                   ),
                   validator: (value) {
-                    if (value!.isEmpty) return "يجب إدخال اسم العائلة";
-
+                    if (value!.isEmpty) return "يجب إدخال الاسم الأخير";
                     return null;
                   },
                 ),
-                const SizedBox(height: 16),
-                const CustomTextForIdentification(text: 'اسم المستخدم'),
-                const SizedBox(height: 5),
+                SizedBox(height: 20.h),
+                const CustomTextForIdentification(
+                  text: "الاسم الشائع",
+                ),
+                SizedBox(height: 8.h),
                 TextFormField(
                   controller: popularNameController,
                   textAlign: TextAlign.right,
                   style: const TextStyle(
                     fontFamily: 'IBMPLEXSANSARABICBold',
                   ),
-                  keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(
-                          horizontal: 16.w, vertical: 16.h),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12.r),
-                        borderSide: const BorderSide(color: Colors.grey),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12.r),
-                        borderSide:
-                            const BorderSide(width: 1.5, color: Colors.grey),
-                      ),
-                      hintText: 'اكتب الاسم اللي تحب تظهر بيه',
-                      hintStyle: TextStyle(
-                        color: Colors.grey.shade400,
-                        fontFamily: 'IBMPLEXSANSARABICSRegular',
-                      ),
-                      suffixIcon: Padding(
-                        padding: const EdgeInsets.all(13.0),
-                        child: SvgPicture.asset('assets/icons/profile.svg'),
-                      )),
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.r),
+                      borderSide: const BorderSide(color: Colors.grey),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.r),
+                      borderSide:
+                          const BorderSide(width: 1.5, color: Colors.grey),
+                    ),
+                    hintText: "اكتب الاسم الشائع",
+                    hintStyle: TextStyle(
+                      color: Colors.grey.shade400,
+                      fontFamily: 'IBMPLEXSANSARABICSRegular',
+                    ),
+                  ),
                   validator: (value) {
-                    if (value!.isEmpty) return "يجب إدخال اسم المستخدم";
-
+                    if (value!.isEmpty) return "يجب إدخال الاسم الشائع";
                     return null;
                   },
                 ),
                 const SizedBox(height: 200),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  padding: EdgeInsets.symmetric(vertical: 20.h),
                   child: Column(
                     children: [
                       BlocBuilder<SignUpCubit, double>(

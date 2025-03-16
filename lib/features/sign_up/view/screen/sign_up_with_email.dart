@@ -5,10 +5,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:x_market/core/helper/custom_text_button.dart';
 
 import '../../../../core/utilits/widgets/custom_appbar.dart';
+
 import '../../bussiness_logic/Sign_up/sign_up_cubit.dart';
 import '../widget/custom_text_for_identification.dart';
 import '../widget/sign_up_in_marketx_title.dart';
-import 'sign_up_with_names.dart'; // استيراد الزر المخصص
+import 'sign_up_with_names.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
@@ -27,7 +28,6 @@ class SignUpScreen extends StatelessWidget {
           child: Form(
             key: formKey,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 40.h),
                 const SignUpInMarketxTitle(),
@@ -61,20 +61,21 @@ class SignUpScreen extends StatelessWidget {
                       fontFamily: 'IBMPLEXSANSARABICSRegular',
                     ),
                     suffixIcon: Padding(
-                      padding: const EdgeInsets.all(12),
+                      padding: EdgeInsets.all(12.w),
                       child: SvgPicture.asset('assets/icons/sms.svg'),
                     ),
                   ),
                   validator: (value) {
                     if (value!.isEmpty) return "يجب إدخال الإيميل";
-                    if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value))
+                    if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
                       return "يجب إدخال إيميل صحيح";
+                    }
                     return null;
                   },
                 ),
                 const Spacer(),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  padding: EdgeInsets.symmetric(vertical: 20.h),
                   child: Column(
                     children: [
                       BlocBuilder<SignUpCubit, double>(
@@ -91,7 +92,6 @@ class SignUpScreen extends StatelessWidget {
                       CustomTextButton(
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
-                            // تحديث قيمة التقدم قبل الانتقال إلى الشاشة التالية
                             context.read<SignUpCubit>().updateProgress(0.1);
                             Navigator.push(
                               context,
