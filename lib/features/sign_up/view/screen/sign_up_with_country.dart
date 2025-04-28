@@ -14,7 +14,6 @@ class CountrySelectionScreen extends StatefulWidget {
   const CountrySelectionScreen({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _CountrySelectionScreenState createState() => _CountrySelectionScreenState();
 }
 
@@ -42,109 +41,117 @@ class _CountrySelectionScreenState extends State<CountrySelectionScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              const SizedBox(height: 30),
-              const SignUpInMarketxTitle(),
-              const SizedBox(height: 45),
-              const CustomTextForIdentification(
-                text: "عايش فين؟",
-              ),
-              const SizedBox(height: 10),
-              GestureDetector(
-                onTap: () => _pickCountry(false),
-                child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Icon(Icons.keyboard_arrow_down_rounded),
-                      Expanded(
-                        child: Text(
-                          selectedCountry ?? "الدولة اللي انت قاعد فيها دلوقتي",
-                          textDirection: TextDirection.rtl,
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const SizedBox(height: 30),
+                    const SignUpInMarketxTitle(),
+                    const SizedBox(height: 45),
+                    const CustomTextForIdentification(
+                      text: "عايش فين؟",
+                    ),
+                    const SizedBox(height: 10),
+                    GestureDetector(
+                      onTap: () => _pickCountry(false),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 12, horizontal: 16),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(8),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20),
-              const CustomTextForIdentification(
-                text: 'جنسيتك ايه؟',
-              ),
-              const SizedBox(height: 10),
-              GestureDetector(
-                onTap: () => _pickCountry(true),
-                child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Icon(Icons.keyboard_arrow_down_rounded),
-                      Expanded(
-                        child: Text(
-                          selectedNationality ?? "الدولة اللي اتولدت فيها",
-                          textDirection: TextDirection.rtl,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Icon(Icons.keyboard_arrow_down_rounded),
+                            Expanded(
+                              child: Text(
+                                selectedCountry ??
+                                    "الدولة اللي انت قاعد فيها دلوقتي",
+                                textDirection: TextDirection.rtl,
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20),
-              BlocBuilder<SignUpCubit, double>(
-                builder: (context, progress) {
-                  return LinearProgressIndicator(
-                    value: progress,
-                    backgroundColor: Colors.grey[300],
-                    valueColor: const AlwaysStoppedAnimation<Color>(Colors.green),
-                  );
-                },
-              ),
-              const SizedBox(height: 5),
-              CustomTextButton(
-                onPressed: () {
-                  if (selectedCountry == null || selectedNationality == null) {
-                    Fluttertoast.showToast(
-                      msg: 'يرجى تحديد الدولة والجنسية',
-                      toastLength: Toast.LENGTH_LONG,
-                      gravity: ToastGravity.BOTTOM,
-                      timeInSecForIosWeb: 5,
-                      backgroundColor: Colors.red,
-                      textColor: Colors.white,
-                    );
-                    return;
-                  }
-
-                  context.read<SignUpCubit>().updateProgress(0.3);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => BlocProvider.value(
-                        value: context.read<SignUpCubit>(),
-                        child: const CreatePasswordScreen(),
                       ),
                     ),
-                  );
-                },
-                text: 'التالي',
+                    const SizedBox(height: 20),
+                    const CustomTextForIdentification(
+                      text: 'جنسيتك ايه؟',
+                    ),
+                    const SizedBox(height: 10),
+                    GestureDetector(
+                      onTap: () => _pickCountry(true),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 12, horizontal: 16),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Icon(Icons.keyboard_arrow_down_rounded),
+                            Expanded(
+                              child: Text(
+                                selectedNationality ??
+                                    "الدولة اللي اتولدت فيها",
+                                textDirection: TextDirection.rtl,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ],
-          ),
+            ),
+            const SizedBox(height: 20),
+            BlocBuilder<SignUpCubit, double>(
+              builder: (context, progress) {
+                return LinearProgressIndicator(
+                  value: progress,
+                  backgroundColor: Colors.grey[300],
+                  valueColor: const AlwaysStoppedAnimation<Color>(Colors.green),
+                );
+              },
+            ),
+            const SizedBox(height: 10),
+            CustomTextButton(
+              onPressed: () {
+                if (selectedCountry == null || selectedNationality == null) {
+                  Fluttertoast.showToast(
+                    msg: 'يرجى تحديد الدولة والجنسية',
+                    toastLength: Toast.LENGTH_LONG,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 5,
+                    backgroundColor: Colors.red,
+                    textColor: Colors.white,
+                  );
+                  return;
+                }
+
+                context.read<SignUpCubit>().updateProgress(0.3);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => BlocProvider.value(
+                      value: context.read<SignUpCubit>(),
+                      child: const CreatePasswordScreen(),
+                    ),
+                  ),
+                );
+              },
+              text: 'التالي',
+            ),
+          ],
         ),
       ),
     );

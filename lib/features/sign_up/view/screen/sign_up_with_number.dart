@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../core/helper/custom_text_button.dart';
 import '../../../../core/utilits/widgets/custom_appbar.dart';
 import '../../bussiness_logic/Sign_up/sign_up_cubit.dart';
@@ -21,15 +22,14 @@ class _SignUpWithNumberState extends State<SignUpWithNumber> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: const CustomAppBar(),
       body: LayoutBuilder(
         builder: (context, constraints) {
-          return SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Form(
-              key: _formKey,
+          return Form(
+            key: _formKey,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -84,42 +84,42 @@ class _SignUpWithNumberState extends State<SignUpWithNumber> {
                       }
                     },
                   ),
-                SizedBox(height: 400.h),
-Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20.h),
-                  child: Column(
-                    children: [
-                      BlocBuilder<SignUpCubit, double>(
-                        builder: (context, progress) {
-                          return LinearProgressIndicator(
-                            value: progress,
-                            backgroundColor: Colors.grey[300],
-                            valueColor: const AlwaysStoppedAnimation<Color>(
-                                Colors.green),
-                          );
-                        },
-                      ),
-                      const SizedBox(height: 5),
-                      CustomTextButton(
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            context.read<SignUpCubit>().updateProgress(0.6);
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => BlocProvider.value(
-                                  value: context.read<SignUpCubit>(),
-                                  child: const SignUpWithNumber(),
-                                ),
-                              ),
+                  const Spacer(),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 20.h),
+                    child: Column(
+                      children: [
+                        BlocBuilder<SignUpCubit, double>(
+                          builder: (context, progress) {
+                            return LinearProgressIndicator(
+                              value: progress,
+                              backgroundColor: Colors.grey[300],
+                              valueColor: const AlwaysStoppedAnimation<Color>(
+                                  Colors.green),
                             );
-                          }
-                        },
-                        text: 'التالي',
-                      ),
-                    ],
+                          },
+                        ),
+                        const SizedBox(height: 5),
+                        CustomTextButton(
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              context.read<SignUpCubit>().updateProgress(0.6);
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //     builder: (context) => BlocProvider.value(
+                              //       value: context.read<SignUpCubit>(),
+                              //       child: const SignUpWithNumber(),
+                              //     ),
+                              //   ),
+                              // );
+                            }
+                          },
+                          text: 'التالي',
+                        ),
+                      ],
+                    ),
                   ),
-                ),
                 ],
               ),
             ),

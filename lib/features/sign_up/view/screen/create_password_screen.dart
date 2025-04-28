@@ -48,10 +48,11 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
               child: Column(
                 children: [
                   SizedBox(height: screenHeight * 0.05),
-                  Image.asset('assets/images/lock.png', width: screenWidth * 0.3),
+                  Image.asset('assets/images/lock.png',
+                      width: screenWidth * 0.3),
                   SizedBox(height: screenHeight * 0.03),
                   const Text(
-                    'انشاء كلمة مرور سريعة',
+                    'التحقق من كلمة المرور',
                     style: TextStyle(
                       fontSize: 18,
                       fontFamily: 'IBMPLEXSANSARABICBold',
@@ -91,7 +92,7 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                       crossAxisCount: 3,
                       mainAxisSpacing: screenHeight * 0.02,
                       crossAxisSpacing: screenWidth * 0.03,
-                      childAspectRatio: screenWidth / (screenHeight / 2),
+                      childAspectRatio: 1.5,
                     ),
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
@@ -101,13 +102,15 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                       }
                       return _buildKey(
                         (index == 10) ? "0" : "${index + 1}",
-                        () =>
-                            _onNumberPressed((index == 10) ? "0" : "${index + 1}"),
+                        () => _onNumberPressed(
+                            (index == 10) ? "0" : "${index + 1}"),
                       );
                     },
                   ),
+                  SizedBox(height: screenHeight * 0.02),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
                     child: BlocBuilder<SignUpCubit, double>(
                       builder: (context, progress) {
                         return LinearProgressIndicator(
@@ -122,7 +125,8 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                   SizedBox(height: screenHeight * 0.01),
                   Padding(
                     padding: EdgeInsets.symmetric(
-                        horizontal: screenWidth * 0.04, vertical: screenHeight * 0.01),
+                        horizontal: screenWidth * 0.04,
+                        vertical: screenHeight * 0.01),
                     child: Container(
                       width: double.infinity,
                       height: screenHeight * 0.07,
@@ -135,7 +139,7 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                       child: TextButton(
                         onPressed: isPinComplete
                             ? () {
-                                context.read<SignUpCubit>().updateProgress(0.4);
+                                context.read<SignUpCubit>().updateProgress(0.5);
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -158,7 +162,9 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: screenHeight * 0.02), // Add some space at the bottom
+                  SizedBox(
+                      height:
+                          screenHeight * 0.02), // Add some space at the bottom
                 ],
               ),
             ),
