@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/theme/colors.dart';
 import '../../../../core/utilits/widgets/custom_appbar.dart';
 import '../../bussiness_logic/Sign_up/sign_up_cubit.dart';
+import '../../bussiness_logic/progress_indecator.dart';
 import 'confirm_password_screen.dart';
 
 class CreatePasswordScreen extends StatefulWidget {
@@ -111,7 +112,7 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                   Padding(
                     padding:
                         EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
-                    child: BlocBuilder<SignUpCubit, double>(
+                    child: BlocBuilder<ProgressIndecator, double>(
                       builder: (context, progress) {
                         return LinearProgressIndicator(
                           value: progress,
@@ -139,12 +140,23 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                       child: TextButton(
                         onPressed: isPinComplete
                             ? () {
-                                context.read<SignUpCubit>().updateProgress(0.5);
+                                context
+                                    .read<SignUpCubit>()
+                                    .updatePasscode(enteredPin);
+                                context
+                                    .read<ProgressIndecator>()
+                                    .updateProgress(0.5);
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => BlocProvider.value(
-                                      value: context.read<SignUpCubit>(),
+                                    builder: (context) => MultiBlocProvider(
+                                      providers: [
+                                        BlocProvider.value(
+                                            value: context
+                                                .read<ProgressIndecator>()),
+                                        BlocProvider.value(
+                                            value: context.read<SignUpCubit>()),
+                                      ],
                                       child: const ConfirmPasswordScreen(),
                                     ),
                                   ),

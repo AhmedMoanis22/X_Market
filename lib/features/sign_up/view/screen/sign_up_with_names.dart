@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/helper/custom_text_button.dart';
 import '../../../../core/utilits/widgets/custom_appbar.dart';
 import '../../bussiness_logic/Sign_up/sign_up_cubit.dart';
+import '../../bussiness_logic/progress_indecator.dart';
 import '../widget/custom_text_for_identification.dart';
 import '../widget/sign_up_in_marketx_title.dart';
 import 'sign_up_with_country.dart';
@@ -76,7 +77,7 @@ class SignUpWithNames extends StatelessWidget {
                             validatorMessage: "يجب إدخال الاسم الشائع",
                           ),
                           const Spacer(),
-                          BlocBuilder<SignUpCubit, double>(
+                          BlocBuilder<ProgressIndecator, double>(
                             builder: (context, progress) {
                               return LinearProgressIndicator(
                                 value: progress,
@@ -90,12 +91,24 @@ class SignUpWithNames extends StatelessWidget {
                           CustomTextButton(
                             onPressed: () {
                               if (formKey.currentState!.validate()) {
-                                context.read<SignUpCubit>().updateProgress(0.2);
+                                context.read<SignUpCubit>().updateName(
+                                    firstNameController.text +
+                                        secondNameController.text +
+                                        lastNameController.text);
+                                context
+                                    .read<ProgressIndecator>()
+                                    .updateProgress(0.2);
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => BlocProvider.value(
-                                      value: context.read<SignUpCubit>(),
+                                    builder: (context) => MultiBlocProvider(
+                                      providers: [
+                                        BlocProvider.value(
+                                            value: context
+                                                .read<ProgressIndecator>()),
+                                        BlocProvider.value(
+                                            value: context.read<SignUpCubit>()),
+                                      ],
                                       child: const CountrySelectionScreen(),
                                     ),
                                   ),

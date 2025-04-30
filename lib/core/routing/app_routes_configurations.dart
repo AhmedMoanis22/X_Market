@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:x_market/features/home_screen.dart';
 import 'package:x_market/features/sign_up/view/screen/confirm_password_screen.dart';
 import 'package:x_market/features/sign_up/view/screen/create_password_screen.dart';
 import 'package:x_market/features/sign_up/view/screen/sign_up_with_country.dart';
@@ -29,4 +30,5 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
       name: AppRoutesName.confirm_password_screen,
       page: () => const ConfirmPasswordScreen()),
+  GetPage(name: AppRoutesName.home, page: () => const HomeScreen()),
 ];

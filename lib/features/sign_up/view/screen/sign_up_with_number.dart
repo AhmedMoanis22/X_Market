@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
+import 'package:x_market/features/sign_up/bussiness_logic/Sign_up/sign_up_state.dart';
 
 import '../../../../core/helper/custom_text_button.dart';
+import '../../../../core/routing/app_routes_name.dart';
 import '../../../../core/utilits/widgets/custom_appbar.dart';
 import '../../bussiness_logic/Sign_up/sign_up_cubit.dart';
+import '../../bussiness_logic/progress_indecator.dart';
 import '../widget/sign_up_in_marketx_title.dart';
 
 class SignUpWithNumber extends StatefulWidget {
@@ -17,7 +22,7 @@ class SignUpWithNumber extends StatefulWidget {
 
 class _SignUpWithNumberState extends State<SignUpWithNumber> {
   final TextEditingController phoneController = TextEditingController();
-  final TextEditingController dobController = TextEditingController();
+  final TextEditingController birthdayController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -59,7 +64,7 @@ class _SignUpWithNumberState extends State<SignUpWithNumber> {
                   ),
                   const SizedBox(height: 20),
                   TextFormField(
-                    controller: dobController,
+                    controller: birthdayController,
                     readOnly: true,
                     decoration: InputDecoration(
                       labelText: "تاريخ الميلاد",
@@ -78,7 +83,7 @@ class _SignUpWithNumberState extends State<SignUpWithNumber> {
                       );
                       if (pickedDate != null) {
                         setState(() {
-                          dobController.text =
+                          birthdayController.text =
                               "${pickedDate.day}/${pickedDate.month}/${pickedDate.year}";
                         });
                       }
@@ -89,7 +94,7 @@ class _SignUpWithNumberState extends State<SignUpWithNumber> {
                     padding: EdgeInsets.symmetric(vertical: 20.h),
                     child: Column(
                       children: [
-                        BlocBuilder<SignUpCubit, double>(
+                        BlocBuilder<ProgressIndecator, double>(
                           builder: (context, progress) {
                             return LinearProgressIndicator(
                               value: progress,
@@ -100,22 +105,53 @@ class _SignUpWithNumberState extends State<SignUpWithNumber> {
                           },
                         ),
                         const SizedBox(height: 5),
-                        CustomTextButton(
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              context.read<SignUpCubit>().updateProgress(0.6);
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) => BlocProvider.value(
-                              //       value: context.read<SignUpCubit>(),
-                              //       child: const SignUpWithNumber(),
-                              //     ),
-                              //   ),
-                              // );
+                        BlocConsumer<SignUpCubit, SignUpState>(
+                          listener: (context, state) {
+                            if (state.status == SignUpStatus.success) {
+                              Fluttertoast.showToast(
+                                msg: state.status.toString(),
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.green,
+                                textColor: Colors.white,
+                                fontSize: 16.0,
+                              );
+                              Get.toNamed(AppRoutesName.login_in);
+                            }
+                            if (state.status == SignUpStatus.failure) {
+                              Fluttertoast.showToast(
+                                msg: state.errorMessage!,
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.red,
+                                textColor: Colors.white,
+                                fontSize: 16.0,
+                              );
                             }
                           },
-                          text: 'التالي',
+                          builder: (context, state) {
+                            return CustomTextButton(
+                              onPressed: () {
+                                if (_formKey.currentState!.validate()) {
+                                  context
+                                      .read<SignUpCubit>()
+                                      .updatePhone(phoneController.text);
+
+                                  context
+                                      .read<SignUpCubit>()
+                                      .updateBirthDate(birthdayController.text);
+                                  context
+                                      .read<ProgressIndecator>()
+                                      .updateProgress(0.6);
+
+                                  context.read<SignUpCubit>().submit();
+                                }
+                              },
+                              text: 'تسجيل الدخول',
+                            );
+                          },
                         ),
                       ],
                     ),

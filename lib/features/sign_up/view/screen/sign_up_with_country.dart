@@ -6,6 +6,7 @@ import 'package:x_market/core/utilits/widgets/custom_appbar.dart';
 
 import '../../../../core/helper/custom_text_button.dart';
 import '../../bussiness_logic/Sign_up/sign_up_cubit.dart';
+import '../../bussiness_logic/progress_indecator.dart';
 import '../widget/custom_text_for_identification.dart';
 import '../widget/sign_up_in_marketx_title.dart';
 import 'create_password_screen.dart';
@@ -114,7 +115,7 @@ class _CountrySelectionScreenState extends State<CountrySelectionScreen> {
               ),
             ),
             const SizedBox(height: 20),
-            BlocBuilder<SignUpCubit, double>(
+            BlocBuilder<ProgressIndecator, double>(
               builder: (context, progress) {
                 return LinearProgressIndicator(
                   value: progress,
@@ -138,12 +139,16 @@ class _CountrySelectionScreenState extends State<CountrySelectionScreen> {
                   return;
                 }
 
-                context.read<SignUpCubit>().updateProgress(0.3);
+                context.read<ProgressIndecator>().updateProgress(0.3);
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => BlocProvider.value(
-                      value: context.read<SignUpCubit>(),
+                    builder: (context) => MultiBlocProvider(
+                      providers: [
+                        BlocProvider.value(
+                            value: context.read<ProgressIndecator>()),
+                        BlocProvider.value(value: context.read<SignUpCubit>()),
+                      ],
                       child: const CreatePasswordScreen(),
                     ),
                   ),

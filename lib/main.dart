@@ -2,13 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:x_market/features/sign_up/bussiness_logic/Sign_up/sign_up_cubit.dart';
+
+import 'core/di/dependeny_injection.dart';
 import 'core/routing/app_routes_configurations.dart';
-import 'features/sign_up/bussiness_logic/Sign_up/sign_up_cubit.dart';
+import 'core/utilits/classes/bloc_observer.dart';
+import 'features/sign_up/bussiness_logic/progress_indecator.dart';
 import 'splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
+  Bloc.observer = MyBlocObserver();
+  await setupGetit();
   runApp(const MyApp());
 }
 
@@ -19,7 +25,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => SignUpCubit()),
+        BlocProvider(create: (context) => ProgressIndecator()),
+        BlocProvider(create: (context) => getIt<SignUpCubit>()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(375, 812),
