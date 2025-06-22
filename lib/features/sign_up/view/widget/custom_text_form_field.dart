@@ -7,8 +7,7 @@ class CustomTextFormField extends StatelessWidget {
       required this.controller,
       this.keyboardType,
       required this.hintText,
-      required this.validator,
-      this.suffixIcon});
+      this.suffixIcon, required this.validator});
   final TextEditingController controller;
   final TextInputType? keyboardType;
   final String hintText;
@@ -41,7 +40,6 @@ class CustomTextFormField extends StatelessWidget {
         ),
         suffixIcon: suffixIcon,
       ),
-      validator: validator,
     );
   }
 }

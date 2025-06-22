@@ -14,6 +14,7 @@ class CountrySelectionScreen extends StatefulWidget {
   const CountrySelectionScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _CountrySelectionScreenState createState() => _CountrySelectionScreenState();
 }
 
@@ -138,7 +139,7 @@ class _CountrySelectionScreenState extends State<CountrySelectionScreen> {
                   return;
                 }
 
-                context.read<SignUpCubit>().updateProgress(0.3);
+                context.read<SignUpCubit>().updateProgress(0.03);
                 Navigator.push(
                   context,
                   MaterialPageRoute(

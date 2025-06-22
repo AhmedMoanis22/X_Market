@@ -90,7 +90,7 @@ class SignUpWithNames extends StatelessWidget {
                           CustomTextButton(
                             onPressed: () {
                               if (formKey.currentState!.validate()) {
-                                context.read<SignUpCubit>().updateProgress(0.2);
+                                context.read<SignUpCubit>().updateProgress(0.02);
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(

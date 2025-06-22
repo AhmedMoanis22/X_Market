@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:x_market/core/helper/custom_text_button.dart';
+import 'package:x_market/features/sign_up/view/screen/confirm_password_screen.dart';
 
 import '../../../../core/theme/colors.dart';
 import '../../../../core/utilits/widgets/custom_appbar.dart';
 import '../../bussiness_logic/Sign_up/sign_up_cubit.dart';
-import 'confirm_password_screen.dart';
 
 class CreatePasswordScreen extends StatefulWidget {
   const CreatePasswordScreen({super.key});
@@ -136,29 +137,20 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                             : Colors.grey.shade300,
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: TextButton(
-                        onPressed: isPinComplete
-                            ? () {
-                                context.read<SignUpCubit>().updateProgress(0.5);
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => BlocProvider.value(
-                                      value: context.read<SignUpCubit>(),
-                                      child: const ConfirmPasswordScreen(),
-                                    ),
-                                  ),
-                                );
-                              }
-                            : null,
-                        child: const Text(
-                          'التالي',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontFamily: 'IBMPLEXSANSARABICBold',
-                            color: Colors.white,
-                          ),
-                        ),
+                      child: CustomTextButton(
+                        onPressed: () {
+                          context.read<SignUpCubit>().updateProgress(0.04);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BlocProvider.value(
+                                value: context.read<SignUpCubit>(),
+                                child: const ConfirmPasswordScreen(),
+                              ),
+                            ),
+                          );
+                        },
+                        text: 'التالي',
                       ),
                     ),
                   ),

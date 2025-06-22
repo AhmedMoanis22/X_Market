@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:x_market/core/helper/custom_text_button.dart';
 import 'package:x_market/core/utilits/widgets/custom_appbar.dart';
 import 'package:x_market/features/sign_up/view/screen/sign_up_with_number.dart';
 
@@ -136,29 +137,20 @@ class _ConfirmPasswordScreenState extends State<ConfirmPasswordScreen> {
                             : Colors.grey.shade300,
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: TextButton(
-                        onPressed: isPinComplete
-                            ? () {
-                                context.read<SignUpCubit>().updateProgress(0.5);
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => BlocProvider.value(
-                                      value: context.read<SignUpCubit>(),
-                                      child: const SignUpWithNumber(),
-                                    ),
-                                  ),
-                                );
-                              }
-                            : null,
-                        child: const Text(
-                          'التالي',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontFamily: 'IBMPLEXSANSARABICBold',
-                            color: Colors.white,
-                          ),
-                        ),
+                      child: CustomTextButton(
+                        onPressed: () {
+                          context.read<SignUpCubit>().updateProgress(0.05);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BlocProvider.value(
+                                value: context.read<SignUpCubit>(),
+                                child: const SignUpWithNumber(),
+                              ),
+                            ),
+                          );
+                        },
+                        text: 'التالي',
                       ),
                     ),
                   ),

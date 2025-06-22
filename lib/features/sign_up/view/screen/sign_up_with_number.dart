@@ -103,16 +103,16 @@ class _SignUpWithNumberState extends State<SignUpWithNumber> {
                         CustomTextButton(
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
-                              context.read<SignUpCubit>().updateProgress(0.6);
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) => BlocProvider.value(
-                              //       value: context.read<SignUpCubit>(),
-                              //       child: const SignUpWithNumber(),
-                              //     ),
-                              //   ),
-                              // );
+                              context.read<SignUpCubit>().updateProgress(0.06);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => BlocProvider.value(
+                                    value: context.read<SignUpCubit>(),
+                                    child: const SignUpWithNumber(),
+                                  ),
+                                ),
+                              );
                             }
                           },
                           text: 'التالي',

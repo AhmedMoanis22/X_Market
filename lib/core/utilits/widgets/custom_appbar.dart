@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:x_market/features/sign_up/bussiness_logic/Sign_up/sign_up_cubit.dart';
 
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -16,6 +18,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           child: GestureDetector(
             onTap: () {
               Navigator.pop(context);
+              context.read<SignUpCubit>().updateProgress(-0.01);
             },
             child: SvgPicture.asset(
               'assets/icons/arrow_back.svg',
