@@ -1,9 +1,24 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ProgressIndecator extends Cubit<double> {
-  ProgressIndecator() : super(0.0);
+class ProgressIndicatorCubit extends Cubit<double> {
+  final int totalSteps;
+  int currentStep;
 
-  void updateProgress(double step) {
-    emit(state + step);
+  ProgressIndicatorCubit({required this.totalSteps})
+      : currentStep = 1, // نبدأ من الخطوة الأولى
+        super(0.1);
+
+  void nextStep() {
+    if (currentStep < totalSteps) {
+      currentStep++;
+      emit(currentStep / totalSteps);
+    }
+  }
+
+  void previousStep() {
+    if (currentStep > 1) {
+      currentStep--;
+      emit(currentStep / totalSteps);
+    }
   }
 }

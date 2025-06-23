@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:x_market/core/helper/custom_text_button.dart';
 
+import '../../../../../core/theme/colors.dart';
 import '../../../../../core/utilits/widgets/custom_appbar.dart';
 import '../../../bussiness_logic/Sign_up/sign_up_cubit.dart';
 import '../../../bussiness_logic/progress_indecator.dart';
@@ -21,7 +22,7 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProgressIndecator(),
+      create: (context) => ProgressIndicatorCubit(totalSteps: 15),
       child: Scaffold(
         appBar: const CustomAppBar(),
         body: Padding(
@@ -79,13 +80,13 @@ class SignUpScreen extends StatelessWidget {
                   padding: EdgeInsets.symmetric(vertical: 20.h),
                   child: Column(
                     children: [
-                      BlocBuilder<ProgressIndecator, double>(
+                      BlocBuilder<ProgressIndicatorCubit, double>(
                         builder: (context, progress) {
                           return LinearProgressIndicator(
                             value: progress,
                             backgroundColor: Colors.grey[300],
                             valueColor: const AlwaysStoppedAnimation<Color>(
-                                Colors.green),
+                                AppColors.secondaryGreen),
                           );
                         },
                       ),
@@ -104,17 +105,16 @@ class SignUpScreen extends StatelessWidget {
                                 .read<SignUpCubit>()
                                 .updateConfirmPassword(passwordController.text);
 
-                            context
-                                .read<ProgressIndecator>()
-                                .updateProgress(0.1);
+                            context.read<ProgressIndicatorCubit>().nextStep();
+
                             Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => MultiBlocProvider(
                                   providers: [
                                     BlocProvider.value(
-                                        value:
-                                            context.read<ProgressIndecator>()),
+                                        value: context
+                                            .read<ProgressIndicatorCubit>()),
                                     BlocProvider.value(
                                         value: context.read<SignUpCubit>()),
                                   ],

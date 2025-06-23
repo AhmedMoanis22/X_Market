@@ -94,7 +94,7 @@ class _SignUpWithNumberState extends State<SignUpWithNumber> {
                     padding: EdgeInsets.symmetric(vertical: 20.h),
                     child: Column(
                       children: [
-                        BlocBuilder<ProgressIndecator, double>(
+                        BlocBuilder<ProgressIndicatorCubit, double>(
                           builder: (context, progress) {
                             return LinearProgressIndicator(
                               value: progress,
@@ -143,8 +143,8 @@ class _SignUpWithNumberState extends State<SignUpWithNumber> {
                                       .read<SignUpCubit>()
                                       .updateBirthDate(birthdayController.text);
                                   context
-                                      .read<ProgressIndecator>()
-                                      .updateProgress(0.6);
+                                      .read<ProgressIndicatorCubit>()
+                                      .nextStep();
 
                                   // context.read<SignUpCubit>().submit();
                                 }

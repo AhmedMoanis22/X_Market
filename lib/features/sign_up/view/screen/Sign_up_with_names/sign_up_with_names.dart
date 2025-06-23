@@ -78,7 +78,7 @@ class SignUpWithNames extends StatelessWidget {
                             validatorMessage: "يجب إدخال الاسم الشائع",
                           ),
                           const Spacer(),
-                          BlocBuilder<ProgressIndecator, double>(
+                          BlocBuilder<ProgressIndicatorCubit, double>(
                             builder: (context, progress) {
                               return LinearProgressIndicator(
                                 value: progress,
@@ -97,16 +97,17 @@ class SignUpWithNames extends StatelessWidget {
                                         secondNameController.text +
                                         lastNameController.text);
                                 context
-                                    .read<ProgressIndecator>()
-                                    .updateProgress(0.2);
+                                    .read<ProgressIndicatorCubit>()
+                                    .nextStep();
+
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => MultiBlocProvider(
                                       providers: [
                                         BlocProvider.value(
-                                            value: context
-                                                .read<ProgressIndecator>()),
+                                            value: context.read<
+                                                ProgressIndicatorCubit>()),
                                         BlocProvider.value(
                                             value: context.read<SignUpCubit>()),
                                       ],

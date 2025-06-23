@@ -14,9 +14,18 @@ class AppRoutesName {
   static const String sign_up_with_national_id = '/sign_up_with_national_id';
   static const String sign_up_with_camera_national_id =
       '/sign_up_with_camera_national_id';
+  static const String sign_up_with_camera_national_id_back =
+      '/sign_up_with_camera_national_id_back';
+  static const String face_recognation_screen = '/face_recognation_screen';
   static const String creaet_password = '/create_password';
   static const String finish_little_steps = '/finish_little_steps';
+  static const String terms_and_conditions_screen =
+      '/terms_and_conditions_screen';
+  static const String job_status_screen = '/job_status_screen';
   //home screen
   static const String home = '/home';
   //reset password screen
+  static const String forgotPasswordScreen = '/forgotPasswordScreen';
+  static const String passwordRepeatScreen = '/passwordRepeatScreen';
+  static const String verifyPasswordScreen = '/verifyPasswordScreen';
 }

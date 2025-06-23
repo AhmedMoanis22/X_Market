@@ -112,7 +112,7 @@ class _ConfirmPasswordScreenState extends State<ConfirmPincodeScreen> {
                   Padding(
                     padding:
                         EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
-                    child: BlocBuilder<ProgressIndecator, double>(
+                    child: BlocBuilder<ProgressIndicatorCubit, double>(
                       builder: (context, progress) {
                         return LinearProgressIndicator(
                           value: progress,
@@ -144,8 +144,8 @@ class _ConfirmPasswordScreenState extends State<ConfirmPincodeScreen> {
                                     .read<SignUpCubit>()
                                     .updateConfirmPasscode(enteredPin);
                                 context
-                                    .read<ProgressIndecator>()
-                                    .updateProgress(0.5);
+                                    .read<ProgressIndicatorCubit>()
+                                    .nextStep();
 
                                 Navigator.push(
                                   context,
@@ -153,8 +153,8 @@ class _ConfirmPasswordScreenState extends State<ConfirmPincodeScreen> {
                                     builder: (context) => MultiBlocProvider(
                                       providers: [
                                         BlocProvider.value(
-                                            value: context
-                                                .read<ProgressIndecator>()),
+                                            value: context.read<
+                                                ProgressIndicatorCubit>()),
                                         BlocProvider.value(
                                             value: context.read<SignUpCubit>()),
                                       ],

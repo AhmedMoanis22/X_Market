@@ -149,7 +149,9 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.toNamed(AppRoutesName.forgotPasswordScreen);
+                  },
                   child: const Text(
                     'نسيت كلمة السر؟',
                     style: TextStyle(

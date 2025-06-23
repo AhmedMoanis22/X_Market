@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:x_market/core/routing/app_routes_name.dart';
 import 'package:x_market/core/theme/colors.dart';
 
 import '../../../../core/helper/custom_text_button.dart';
+import '../../bussiness_logic/progress_indecator.dart';
 
 class FinishStepsScreen extends StatelessWidget {
   const FinishStepsScreen({super.key});
@@ -71,9 +74,21 @@ class FinishStepsScreen extends StatelessWidget {
                       ),
                     ),
                     const Spacer(),
+                    BlocBuilder<ProgressIndicatorCubit, double>(
+                      builder: (context, progress) {
+                        return LinearProgressIndicator(
+                          value: progress,
+                          backgroundColor: Colors.grey[300],
+                          valueColor: const AlwaysStoppedAnimation<Color>(
+                              AppColors.secondaryGreen),
+                        );
+                      },
+                    ),
+                    SizedBox(height: 5.h),
                     CustomTextButton(
                       onPressed: () {
                         Get.toNamed(AppRoutesName.sign_up_with_national_id);
+                        context.read<ProgressIndicatorCubit>().nextStep();
                       },
                       text: 'إكمال التسجيل',
                     ),

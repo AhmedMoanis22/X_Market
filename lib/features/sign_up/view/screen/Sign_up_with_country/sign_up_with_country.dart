@@ -115,7 +115,7 @@ class _CountrySelectionScreenState extends State<CountrySelectionScreen> {
               ),
             ),
             const SizedBox(height: 20),
-            BlocBuilder<ProgressIndecator, double>(
+            BlocBuilder<ProgressIndicatorCubit, double>(
               builder: (context, progress) {
                 return LinearProgressIndicator(
                   value: progress,
@@ -139,14 +139,14 @@ class _CountrySelectionScreenState extends State<CountrySelectionScreen> {
                   return;
                 }
 
-                context.read<ProgressIndecator>().updateProgress(0.3);
+                context.read<ProgressIndicatorCubit>().nextStep();
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => MultiBlocProvider(
                       providers: [
                         BlocProvider.value(
-                            value: context.read<ProgressIndecator>()),
+                            value: context.read<ProgressIndicatorCubit>()),
                         BlocProvider.value(value: context.read<SignUpCubit>()),
                       ],
                       child: const CreatePincodeScreen(),

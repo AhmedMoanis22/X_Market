@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../features/sign_up/bussiness_logic/progress_indecator.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key});
@@ -16,6 +18,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           child: GestureDetector(
             onTap: () {
               Navigator.pop(context);
+              context.read<ProgressIndicatorCubit>().previousStep();
             },
             child: SvgPicture.asset(
               'assets/icons/arrow_back.svg',
