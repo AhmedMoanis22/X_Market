@@ -4,12 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:x_market/core/utilits/widgets/custom_appbar.dart';
 
-import '../../../../core/helper/custom_text_button.dart';
-import '../../bussiness_logic/Sign_up/sign_up_cubit.dart';
-import '../../bussiness_logic/progress_indecator.dart';
-import '../widget/custom_text_for_identification.dart';
-import '../widget/sign_up_in_marketx_title.dart';
-import 'create_password_screen.dart';
+import '../../../../../core/helper/custom_text_button.dart';
+import '../../../bussiness_logic/Sign_up/sign_up_cubit.dart';
+import '../../../bussiness_logic/progress_indecator.dart';
+import '../../widget/custom_text_for_identification.dart';
+import '../../widget/sign_up_in_marketx_title.dart';
+import '../pin_code/create_pincode_screen.dart';
 
 class CountrySelectionScreen extends StatefulWidget {
   const CountrySelectionScreen({super.key});
@@ -149,7 +149,7 @@ class _CountrySelectionScreenState extends State<CountrySelectionScreen> {
                             value: context.read<ProgressIndecator>()),
                         BlocProvider.value(value: context.read<SignUpCubit>()),
                       ],
-                      child: const CreatePasswordScreen(),
+                      child: const CreatePincodeScreen(),
                     ),
                   ),
                 );

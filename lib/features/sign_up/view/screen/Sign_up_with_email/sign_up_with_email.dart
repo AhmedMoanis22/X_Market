@@ -4,12 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:x_market/core/helper/custom_text_button.dart';
 
-import '../../../../core/utilits/widgets/custom_appbar.dart';
-import '../../bussiness_logic/Sign_up/sign_up_cubit.dart';
-import '../../bussiness_logic/progress_indecator.dart';
-import '../widget/custom_text_for_identification.dart';
-import '../widget/sign_up_in_marketx_title.dart';
-import 'sign_up_with_names.dart';
+import '../../../../../core/utilits/widgets/custom_appbar.dart';
+import '../../../bussiness_logic/Sign_up/sign_up_cubit.dart';
+import '../../../bussiness_logic/progress_indecator.dart';
+import '../../widget/custom_text_for_identification.dart';
+import '../../widget/sign_up_in_marketx_title.dart';
+import '../Sign_up_with_names/sign_up_with_names.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
@@ -70,52 +70,6 @@ class SignUpScreen extends StatelessWidget {
                     if (value!.isEmpty) return "يجب إدخال الإيميل";
                     if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
                       return "يجب إدخال إيميل صحيح";
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 16),
-                const Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    'كلمة السر',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-                TextFormField(
-                  controller: passwordController,
-                  textAlign: TextAlign.right,
-                  style: const TextStyle(
-                    fontFamily: 'IBMPLEXSANSARABICBold',
-                  ),
-                  decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 16),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: const BorderSide(color: Colors.grey),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: const BorderSide(width: 1.5),
-                    ),
-                    hintText: "اكتب كلمة السر",
-                    hintStyle: TextStyle(
-                        color: Colors.grey.shade400,
-                        fontFamily: 'IBMPLEXSANSARABICSRegular'),
-                    suffixIcon: Padding(
-                      padding: const EdgeInsets.all(13.0),
-                      child: SvgPicture.asset('assets/icons/lock.svg'),
-                    ),
-                  ),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return "يجب إدخال كلمة السر";
-                    } else if (value.length < 6) {
-                      return "يجب أن تكون كلمة السر على الأقل 6 أحرف";
                     }
                     return null;
                   },

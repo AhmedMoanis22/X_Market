@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:x_market/core/utilits/widgets/custom_appbar.dart';
 
-import '../../../../core/theme/colors.dart';
-import '../../../../core/utilits/widgets/custom_appbar.dart';
-import '../../bussiness_logic/Sign_up/sign_up_cubit.dart';
-import '../../bussiness_logic/progress_indecator.dart';
-import 'confirm_password_screen.dart';
+import '../../../../../core/theme/colors.dart';
+import '../../../bussiness_logic/Sign_up/sign_up_cubit.dart';
+import '../../../bussiness_logic/progress_indecator.dart';
+import '../Sign_up_with_number/sign_up_with_number.dart';
 
-class CreatePasswordScreen extends StatefulWidget {
-  const CreatePasswordScreen({super.key});
+class ConfirmPincodeScreen extends StatefulWidget {
+  const ConfirmPincodeScreen({super.key});
 
   @override
-  State<CreatePasswordScreen> createState() => _CreatePasswordScreenState();
+  State<ConfirmPincodeScreen> createState() => _ConfirmPasswordScreenState();
 }
 
-class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
+class _ConfirmPasswordScreenState extends State<ConfirmPincodeScreen> {
   String enteredPin = "";
   final int pinLength = 4;
 
@@ -142,10 +142,11 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                             ? () {
                                 context
                                     .read<SignUpCubit>()
-                                    .updatePasscode(enteredPin);
+                                    .updateConfirmPasscode(enteredPin);
                                 context
                                     .read<ProgressIndecator>()
                                     .updateProgress(0.5);
+
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -157,7 +158,7 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                                         BlocProvider.value(
                                             value: context.read<SignUpCubit>()),
                                       ],
-                                      child: const ConfirmPasswordScreen(),
+                                      child: const SignUpWithNumber(),
                                     ),
                                   ),
                                 );

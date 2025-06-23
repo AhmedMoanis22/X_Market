@@ -5,12 +5,12 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:x_market/features/sign_up/bussiness_logic/Sign_up/sign_up_state.dart';
 
-import '../../../../core/helper/custom_text_button.dart';
-import '../../../../core/routing/app_routes_name.dart';
-import '../../../../core/utilits/widgets/custom_appbar.dart';
-import '../../bussiness_logic/Sign_up/sign_up_cubit.dart';
-import '../../bussiness_logic/progress_indecator.dart';
-import '../widget/sign_up_in_marketx_title.dart';
+import '../../../../../core/helper/custom_text_button.dart';
+import '../../../../../core/routing/app_routes_name.dart';
+import '../../../../../core/utilits/widgets/custom_appbar.dart';
+import '../../../bussiness_logic/Sign_up/sign_up_cubit.dart';
+import '../../../bussiness_logic/progress_indecator.dart';
+import '../../widget/sign_up_in_marketx_title.dart';
 
 class SignUpWithNumber extends StatefulWidget {
   const SignUpWithNumber({super.key});
@@ -146,10 +146,11 @@ class _SignUpWithNumberState extends State<SignUpWithNumber> {
                                       .read<ProgressIndecator>()
                                       .updateProgress(0.6);
 
-                                  context.read<SignUpCubit>().submit();
+                                  // context.read<SignUpCubit>().submit();
                                 }
+                                Get.toNamed(AppRoutesName.finish_little_steps);
                               },
-                              text: 'تسجيل الدخول',
+                              text: 'التالي',
                             );
                           },
                         ),

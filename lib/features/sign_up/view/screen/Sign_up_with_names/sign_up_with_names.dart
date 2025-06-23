@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/helper/custom_text_button.dart';
-import '../../../../core/utilits/widgets/custom_appbar.dart';
-import '../../bussiness_logic/Sign_up/sign_up_cubit.dart';
-import '../../bussiness_logic/progress_indecator.dart';
-import '../widget/custom_text_for_identification.dart';
-import '../widget/sign_up_in_marketx_title.dart';
-import 'sign_up_with_country.dart';
+import '../../../../../core/helper/custom_text_button.dart';
+import '../../../../../core/utilits/widgets/app_text_field.dart';
+import '../../../../../core/utilits/widgets/custom_appbar.dart';
+import '../../../bussiness_logic/Sign_up/sign_up_cubit.dart';
+import '../../../bussiness_logic/progress_indecator.dart';
+import '../../widget/custom_text_for_identification.dart';
+import '../../widget/sign_up_in_marketx_title.dart';
+import '../Sign_up_with_country/sign_up_with_country.dart';
 
 class SignUpWithNames extends StatelessWidget {
   SignUpWithNames({super.key});
@@ -128,40 +129,6 @@ class SignUpWithNames extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  Widget buildTextField({
-    required TextEditingController controller,
-    required String hint,
-    required String validatorMessage,
-  }) {
-    return TextFormField(
-      controller: controller,
-      textAlign: TextAlign.right,
-      style: const TextStyle(
-        fontFamily: 'IBMPLEXSANSARABICBold',
-      ),
-      decoration: InputDecoration(
-        contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12.r),
-          borderSide: const BorderSide(color: Colors.grey),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12.r),
-          borderSide: const BorderSide(width: 1.5, color: Colors.grey),
-        ),
-        hintText: hint,
-        hintStyle: TextStyle(
-          color: Colors.grey.shade400,
-          fontFamily: 'IBMPLEXSANSARABICSRegular',
-        ),
-      ),
-      validator: (value) {
-        if (value!.isEmpty) return validatorMessage;
-        return null;
-      },
     );
   }
 }
