@@ -15,6 +15,7 @@ class CountrySelectionScreen extends StatefulWidget {
   const CountrySelectionScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _CountrySelectionScreenState createState() => _CountrySelectionScreenState();
 }
 

@@ -11,6 +11,8 @@ class AppRoutesName {
   static const String sign_up_with_country = '/sign_up_with_country';
   static const String create_password_screen = '/create_password_screen';
   static const String confirm_password_screen = '/confirm_password_screen';
+  //forgot password screen
+  static const String forgot_password = '/forgot_password';
   //home screen
   static const String home = '/home';
 }

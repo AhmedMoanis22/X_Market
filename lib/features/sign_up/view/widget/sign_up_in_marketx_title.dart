@@ -18,3 +18,20 @@ class SignUpInMarketxTitle extends StatelessWidget {
     );
   }
 }
+class  ForgotPasswordTitle extends StatelessWidget {
+  const ForgotPasswordTitle({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.center,
+      child: Text(
+        'نسيت كلمةالسر',
+        style: TextStyle(
+          fontSize: 18.sp,
+          fontFamily: 'IBMPLEXSANSARABICBold',
+        ),
+      ),
+    );
+  }
+}

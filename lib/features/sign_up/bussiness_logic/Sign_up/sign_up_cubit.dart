@@ -77,4 +77,6 @@ class SignUpCubit extends Cubit<SignUpState> {
       (_) => emit(state.copyWith(status: SignUpStatus.success)),
     );
   }
+
+  void updateProgress(double d) {}
 }

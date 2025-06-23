@@ -16,7 +16,6 @@ class SignUpScreen extends StatelessWidget {
 
   final formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -74,55 +73,9 @@ class SignUpScreen extends StatelessWidget {
                     return null;
                   },
                 ),
-                const SizedBox(height: 16),
-                const Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    'كلمة السر',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-                TextFormField(
-                  controller: passwordController,
-                  textAlign: TextAlign.right,
-                  style: const TextStyle(
-                    fontFamily: 'IBMPLEXSANSARABICBold',
-                  ),
-                  decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 16),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: const BorderSide(color: Colors.grey),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: const BorderSide(width: 1.5),
-                    ),
-                    hintText: "اكتب كلمة السر",
-                    hintStyle: TextStyle(
-                        color: Colors.grey.shade400,
-                        fontFamily: 'IBMPLEXSANSARABICSRegular'),
-                    suffixIcon: Padding(
-                      padding: const EdgeInsets.all(13.0),
-                      child: SvgPicture.asset('assets/icons/lock.svg'),
-                    ),
-                  ),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return "يجب إدخال كلمة السر";
-                    } else if (value.length < 6) {
-                      return "يجب أن تكون كلمة السر على الأقل 6 أحرف";
-                    }
-                    return null;
-                  },
-                ),
                 const Spacer(),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20.h),
+                  padding: EdgeInsets.symmetric(vertical: 5.h),
                   child: Column(
                     children: [
                       BlocBuilder<ProgressIndecator, double>(
@@ -142,14 +95,6 @@ class SignUpScreen extends StatelessWidget {
                             context
                                 .read<SignUpCubit>()
                                 .updateEmail(emailController.text);
-                            context
-                                .read<SignUpCubit>()
-                                .updatePassword(passwordController.text);
-
-                            context
-                                .read<SignUpCubit>()
-                                .updateConfirmPassword(passwordController.text);
-
                             context
                                 .read<ProgressIndecator>()
                                 .updateProgress(0.1);
