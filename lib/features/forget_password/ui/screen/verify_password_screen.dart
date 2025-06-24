@@ -46,70 +46,72 @@ class _VerifyPasswordScreenState extends State<VerifyPasswordScreen> {
       body: Column(
         children: [
           Expanded(
-            child: Column(
-              children: [
-                SizedBox(height: screenHeight * 0.05),
-                SvgPicture.asset(
-                  'assets/icons/email.svg',
-                ),
-                SizedBox(height: screenHeight * 0.03),
-                const Text(
-                  'اكتب الكود اللي وصلك',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontFamily: 'IBMPLEXSANSARABICBold',
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(height: screenHeight * 0.05),
+                  SvgPicture.asset(
+                    'assets/icons/email.svg',
                   ),
-                ),
-                SizedBox(height: screenHeight * 0.01),
-                const Text(
-                  'بعتنالك رسالة على إيميلك فيها كود من 6 أرقام',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontFamily: 'IBMPLEXSANSARABICSRegular',
+                  SizedBox(height: screenHeight * 0.03),
+                  const Text(
+                    'اكتب الكود اللي وصلك',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontFamily: 'IBMPLEXSANSARABICBold',
+                    ),
                   ),
-                ),
-                SizedBox(height: screenHeight * 0.03),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                    pinLength,
-                    (index) => Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 5),
-                      width: screenWidth * 0.03,
-                      height: screenWidth * 0.03,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: index < enteredPin.length
-                            ? Colors.green
-                            : Colors.grey.shade300,
+                  SizedBox(height: screenHeight * 0.01),
+                  const Text(
+                    'بعتنالك رسالة على إيميلك فيها كود من 6 أرقام',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontFamily: 'IBMPLEXSANSARABICSRegular',
+                    ),
+                  ),
+                  SizedBox(height: screenHeight * 0.03),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(
+                      pinLength,
+                      (index) => Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 5),
+                        width: screenWidth * 0.03,
+                        height: screenWidth * 0.03,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: index < enteredPin.length
+                              ? Colors.green
+                              : Colors.grey.shade300,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                SizedBox(height: screenHeight * 0.02),
-                GridView.builder(
-                  shrinkWrap: true,
-                  itemCount: 12,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    mainAxisSpacing: screenHeight * 0.02,
-                    crossAxisSpacing: screenWidth * 0.03,
-                    childAspectRatio: 1.5,
+                  SizedBox(height: screenHeight * 0.02),
+                  GridView.builder(
+                    shrinkWrap: true,
+                    itemCount: 12,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      mainAxisSpacing: screenHeight * 0.02,
+                      crossAxisSpacing: screenWidth * 0.03,
+                      childAspectRatio: 1.5,
+                    ),
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      if (index == 9) return const SizedBox();
+                      if (index == 11) {
+                        return _buildKey("", _onDeletePressed, Icons.backspace);
+                      }
+                      return _buildKey(
+                        (index == 10) ? "0" : "${index + 1}",
+                        () => _onNumberPressed(
+                            (index == 10) ? "0" : "${index + 1}"),
+                      );
+                    },
                   ),
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    if (index == 9) return const SizedBox();
-                    if (index == 11) {
-                      return _buildKey("", _onDeletePressed, Icons.backspace);
-                    }
-                    return _buildKey(
-                      (index == 10) ? "0" : "${index + 1}",
-                      () => _onNumberPressed(
-                          (index == 10) ? "0" : "${index + 1}"),
-                    );
-                  },
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           Padding(

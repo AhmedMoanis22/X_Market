@@ -3,20 +3,56 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:x_market/features/sign_up/view/widget/custom_text_for_identification.dart';
 
 import '../../../../../core/helper/custom_text_button.dart';
 import '../../../../../core/routing/app_routes_name.dart';
 import '../../../../../core/theme/colors.dart';
 import '../../../../../core/utilits/widgets/app_text_field.dart';
 import '../../../../../core/utilits/widgets/custom_appbar.dart';
-import '../../../sign_up/view/widget/custom_text_for_identification.dart';
 
-class PasswordRepeatScreen extends StatelessWidget {
-  PasswordRepeatScreen({super.key});
+class PasswordRepeatScreen extends StatefulWidget {
+  const PasswordRepeatScreen({super.key});
 
+  @override
+  State<PasswordRepeatScreen> createState() => _PasswordRepeatScreenState();
+}
+
+class _PasswordRepeatScreenState extends State<PasswordRepeatScreen> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
+
+  String buttonText = 'التالي';
+
+  void checkFields() {
+    if (passwordController.text.isNotEmpty &&
+        confirmPasswordController.text.isNotEmpty) {
+      setState(() {
+        buttonText = 'تسجيل الدخول';
+      });
+    } else if (passwordController.text.isEmpty ||
+        confirmPasswordController.text.isEmpty) {
+      setState(() {
+        buttonText = 'التالي';
+      });
+    }
+
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    passwordController.addListener(checkFields);
+    confirmPasswordController.addListener(checkFields);
+  }
+
+  @override
+  void dispose() {
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +69,7 @@ class PasswordRepeatScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       const Text(
-                        'إنشاء كلمة السر للحساب',
+                        'إعادة ضبط كلمة السر',
                         style: TextStyle(
                           fontSize: 18,
                           fontFamily: 'IBMPLEXSANSARABICBold',
@@ -141,7 +177,7 @@ class PasswordRepeatScreen extends StatelessWidget {
                       () => Get.toNamed(AppRoutesName.login_in),
                     );
                   },
-                  text: 'تسجيل الدخول',
+                  text: buttonText,
                 ),
               ),
             ],

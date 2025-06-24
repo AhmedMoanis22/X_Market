@@ -1,0 +1,2 @@
+D:/hallo/X_Market/android/app/.cxx/Debug/2x6m1i6z/armeabi-v7a/CMakeFiles/edit_cache.dir
+D:/hallo/X_Market/android/app/.cxx/Debug/2x6m1i6z/armeabi-v7a/CMakeFiles/rebuild_cache.dir
