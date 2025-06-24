@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/helper/custom_text_button.dart';
 import '../../../../core/routing/app_routes_name.dart';
 import '../../../../core/theme/colors.dart';
+import '../../../../core/utilits/widgets/custom_text_button.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});

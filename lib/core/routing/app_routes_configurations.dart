@@ -19,6 +19,8 @@ import '../../features/sign_up/view/screen/Sign_up_with_national_id_and_face_rec
 import '../../features/sign_up/view/screen/create_passowrd/create_password_screen.dart';
 import '../../features/sign_up/view/screen/finish_steps_screen.dart';
 import '../../features/sign_up/view/screen/job_status/job_status_screen.dart';
+import '../../features/sign_up/view/screen/profile_customization/ui/screen/profile_customization_questions.dart';
+import '../../features/sign_up/view/screen/profile_customization/ui/screen/profile_customization_screen.dart';
 import '../../features/sign_up/view/screen/terms_and_conditions/terms_and_conditions_screen.dart';
 import 'app_routes_name.dart';
 
@@ -80,10 +82,17 @@ List<GetPage<dynamic>>? routes = [
   ),
   GetPage(
     name: AppRoutesName.passwordRepeatScreen,
-    page: () => PasswordRepeatScreen(),
+    page: () => const PasswordRepeatScreen(),
   ),
   GetPage(
     name: AppRoutesName.verifyPasswordScreen,
     page: () => const VerifyPasswordScreen(),
   ),
+  GetPage(
+    name: AppRoutesName.profileCustomizationScreen,
+    page: () => const ProfileCustomizationScreen(),
+  ),
+  GetPage(
+      name: AppRoutesName.profileCustomizationQuestionScreen,
+      page: () => const ProfileCustomizationQuestions()),
 ];

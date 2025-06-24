@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:x_market/core/helper/custom_text_button.dart';
+import 'package:x_market/core/utilits/widgets/custom_text_button.dart';
 
 import '../../../../../core/theme/colors.dart';
 import '../../../../../core/utilits/widgets/custom_appbar.dart';

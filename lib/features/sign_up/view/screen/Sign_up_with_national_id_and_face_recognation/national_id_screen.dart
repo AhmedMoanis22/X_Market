@@ -6,8 +6,10 @@ import 'package:get/get.dart';
 import 'package:x_market/core/routing/app_routes_name.dart';
 import 'package:x_market/core/theme/colors.dart';
 
-import '../../../../../core/helper/custom_text_button.dart';
 import '../../../../../core/utilits/widgets/custom_appbar.dart';
+import '../../../../../core/utilits/widgets/custom_head_text.dart';
+import '../../../../../core/utilits/widgets/custom_sub_head_text.dart';
+import '../../../../../core/utilits/widgets/custom_text_button.dart';
 import '../../../bussiness_logic/progress_indecator.dart';
 
 class NationalIdScreen extends StatelessWidget {
@@ -26,22 +28,13 @@ class NationalIdScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   const SizedBox(height: 40),
-                  const Text(
-                    'إثبات الهوية الشخصية وبطاقة الرقم القومي',
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontFamily: 'IBMPLEXSANSARABICBold',
-                    ),
-                    textAlign: TextAlign.right,
+                  const CustomHeadText(
+                    text: 'إثبات الهوية الشخصية وبطاقة الرقم القومي',
                   ),
                   const SizedBox(height: 20),
-                  const Text(
-                    'محتاجين صورة البطاقة الشخصية عشان تثبت إنك عايش في مصر وعلشان نقدر نأكد هويتك. بياناتك بتتراجع بأمان.',
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontFamily: 'IBMPLEXSANSARABICRegular',
-                        color: AppColors.gray),
-                    textAlign: TextAlign.right,
+                  const CustomSubHeadText(
+                    text:
+                        'محتاجين صورة البطاقة الشخصية عشان تثبت إنك عايش في مصر وعلشان نقدر نأكد هويتك. بياناتك بتتراجع بأمان.',
                   ),
                   const SizedBox(height: 40),
                   Row(

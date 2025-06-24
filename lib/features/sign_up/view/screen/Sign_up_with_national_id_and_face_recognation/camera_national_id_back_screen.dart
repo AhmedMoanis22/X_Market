@@ -9,6 +9,9 @@ import 'package:x_market/core/utilits/widgets/custom_appbar.dart';
 
 import '../../../../../core/routing/app_routes_name.dart';
 import '../../../../../core/theme/colors.dart';
+import '../../../../../core/utilits/widgets/custom_head_text.dart';
+import '../../../../../core/utilits/widgets/custom_sub_head_text.dart';
+import '../../../../../core/utilits/widgets/custom_text_button.dart';
 
 class NationalIdBackCameraScreen extends StatefulWidget {
   const NationalIdBackCameraScreen({super.key});
@@ -84,25 +87,16 @@ class _NationalIdCameraScreenState extends State<NationalIdBackCameraScreen> {
           const SizedBox(height: 40),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
-              'صورة بطاقة الرقم القومي',
-              style: TextStyle(
-                fontSize: 25,
-                fontFamily: 'IBMPLEXSANSARABICBold',
-              ),
-              textAlign: TextAlign.right,
+            child: CustomHeadText(
+              text: 'صورة بطاقة الرقم القومي',
             ),
           ),
           const SizedBox(height: 20),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
-              'محتاجين صورة البطاقة الشخصية عشان تثبت إنك عايش في مصر وعلشان نقدر نأكد هويتك، بياناتك بتتراجع بأمان.',
-              style: TextStyle(
-                  fontSize: 16,
-                  fontFamily: 'IBMPLEXSANSARABICRegular',
-                  color: AppColors.gray),
-              textAlign: TextAlign.right,
+            child: CustomSubHeadText(
+              text:
+                  'محتاجين صورة البطاقة الشخصية عشان تثبت إنك عايش في مصر وعلشان نقدر نأكد هويتك، بياناتك بتتراجع بأمان.',
             ),
           ),
           const SizedBox(height: 20),
@@ -171,36 +165,18 @@ class _NationalIdCameraScreenState extends State<NationalIdBackCameraScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
+                CustomTextButton(
                   onPressed: _acceptPicture,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primaryGreen,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 32, vertical: 12),
-                  ),
-                  child: const Text(
-                    'مقبولة',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontFamily: 'IBMPLEXSANSARABICBold'),
-                  ),
+                  text: 'مقبولة',
+                  width: 150,
                 ),
                 const SizedBox(width: 16),
-                OutlinedButton(
+                CustomTextButton(
                   onPressed: _resetPicture,
-                  style: OutlinedButton.styleFrom(
-                    side: const BorderSide(color: AppColors.primaryGreen),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 32, vertical: 12),
-                  ),
-                  child: const Text(
-                    'صورها تاني',
-                    style: TextStyle(
-                        color: AppColors.primaryGreen,
-                        fontSize: 18,
-                        fontFamily: 'IBMPLEXSANSARABICBold'),
-                  ),
+                  text: 'صورها تاني',
+                  width: 150,
+                  buttonColor: Colors.white,
+                  textColor: AppColors.primaryGreen,
                 ),
               ],
             ),

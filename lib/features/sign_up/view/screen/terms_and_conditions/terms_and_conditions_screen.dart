@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:x_market/core/routing/app_routes_name.dart';
 import 'package:x_market/core/utilits/widgets/custom_appbar.dart';
 
 import '../../../../../core/theme/colors.dart';
+import '../../../../../core/utilits/widgets/custom_head_text.dart';
+import '../../../../../core/utilits/widgets/custom_sub_head_text.dart';
 import '../../../bussiness_logic/progress_indecator.dart';
 
 class TermsAndConditionsScreen extends StatefulWidget {
@@ -30,22 +34,13 @@ class _TermsAndConditionsScreenState extends State<TermsAndConditionsScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text(
-                    'الحالة الوظيفية',
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontFamily: 'IBMPLEXSANSARABICBold',
-                    ),
+                  CustomHeadText(
+                    text: 'الشروط والأحكام',
                   ),
                   SizedBox(height: 20),
-                  Text(
-                    'باستخدامك لتطبيق "ماركت إكس" ، فأنت توافق تلقائيًا ودون قيد أو شرط على جميع الشروط والأحكام التالية، ويُرجى قراءتها بعناية حيث أن استمرار استخدامك للخدمة يُعتبر قبولاً كاملاً لها.',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontFamily: 'IBMPLEXSANSARABICRegular',
-                      color: Colors.black,
-                    ),
-                    textAlign: TextAlign.right,
+                  CustomSubHeadText(
+                    text:
+                        'باستخدامك لتطبيق "ماركت إكس" ، فأنت توافق تلقائيًا ودون قيد أو شرط على جميع الشروط والأحكام التالية، ويُرجى قراءتها بعناية حيث أن استمرار استخدامك للخدمة يُعتبر قبولاً كاملاً لها.',
                   ),
                   SizedBox(height: 15),
                   Text(
@@ -138,6 +133,8 @@ class _TermsAndConditionsScreenState extends State<TermsAndConditionsScreen> {
                       onPressed: _agreed
                           ? () {
                               context.read<ProgressIndicatorCubit>().nextStep();
+                              Get.toNamed(
+                                  AppRoutesName.profileCustomizationScreen);
                             }
                           : null,
                       style: ElevatedButton.styleFrom(

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:x_market/core/helper/custom_text_button.dart';
 import 'package:x_market/core/routing/app_routes_name.dart';
 import 'package:x_market/core/utilits/widgets/custom_appbar.dart';
+import 'package:x_market/core/utilits/widgets/custom_text_button.dart';
 import 'package:x_market/features/sign_up/view/widget/custom_text_for_identification.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {

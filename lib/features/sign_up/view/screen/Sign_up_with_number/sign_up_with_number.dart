@@ -5,9 +5,9 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:x_market/features/sign_up/bussiness_logic/Sign_up/sign_up_state.dart';
 
-import '../../../../../core/helper/custom_text_button.dart';
 import '../../../../../core/routing/app_routes_name.dart';
 import '../../../../../core/utilits/widgets/custom_appbar.dart';
+import '../../../../../core/utilits/widgets/custom_text_button.dart';
 import '../../../bussiness_logic/Sign_up/sign_up_cubit.dart';
 import '../../../bussiness_logic/progress_indecator.dart';
 import '../../widget/sign_up_in_marketx_title.dart';

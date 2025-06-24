@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:x_market/core/routing/app_routes_name.dart';
 import 'package:x_market/core/theme/colors.dart';
 
-import '../../../../core/helper/custom_text_button.dart';
+import '../../../../core/utilits/widgets/custom_text_button.dart';
 import '../../bussiness_logic/progress_indecator.dart';
 
 class FinishStepsScreen extends StatelessWidget {
@@ -87,7 +87,7 @@ class FinishStepsScreen extends StatelessWidget {
                     SizedBox(height: 5.h),
                     CustomTextButton(
                       onPressed: () {
-                        Get.toNamed(AppRoutesName.sign_up_with_national_id);
+                        Get.toNamed(AppRoutesName.creaet_password);
                         context.read<ProgressIndicatorCubit>().nextStep();
                       },
                       text: 'إكمال التسجيل',

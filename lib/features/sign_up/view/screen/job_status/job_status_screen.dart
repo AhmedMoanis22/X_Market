@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:x_market/core/routing/app_routes_name.dart';
 import 'package:x_market/core/utilits/widgets/custom_appbar.dart';
 
 import '../../../../../core/theme/colors.dart';
+import '../../../../../core/utilits/widgets/custom_head_text.dart';
+import '../../../../../core/utilits/widgets/custom_sub_head_text.dart';
 import '../../../bussiness_logic/progress_indecator.dart';
 
 class JobStatusScreen extends StatefulWidget {
@@ -39,22 +41,13 @@ class _JobStatusScreenState extends State<JobStatusScreen> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   SizedBox(height: 40.h),
-                  const Text(
-                    'الحالة الوظيفية',
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontFamily: 'IBMPLEXSANSARABICBold',
-                    ),
+                  const CustomHeadText(
+                    text: 'الحالة الوظيفية',
                   ),
                   SizedBox(height: 20.h),
-                  const Text(
-                    'اختار الحالة الوظيفية ليك سواء انت موظف أو طالب أو متقاعد.',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontFamily: 'IBMPLEXSANSARABICRegular',
-                      color: AppColors.gray,
-                    ),
-                    textAlign: TextAlign.right,
+                  const CustomSubHeadText(
+                    text:
+                        'اختار الحالة الوظيفية ليك سواء انت موظف أو طالب أو متقاعد.',
                   ),
                   SizedBox(height: 40.h),
                   ...List.generate(
@@ -101,8 +94,9 @@ class _JobStatusScreenState extends State<JobStatusScreen> {
                                   statusOptions[index],
                                   style: TextStyle(
                                     fontFamily: 'IBMPLEXSANSARABICRegular',
-                                    fontSize:
-                                        _selectedStatus == index ? 18.sp : 16.sp,
+                                    fontSize: _selectedStatus == index
+                                        ? 18.sp
+                                        : 16.sp,
                                     color: Colors.grey[700],
                                     fontWeight: _selectedStatus == index
                                         ? FontWeight.bold

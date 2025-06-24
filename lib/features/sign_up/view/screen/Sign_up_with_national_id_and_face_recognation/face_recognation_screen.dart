@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,9 @@ import 'package:x_market/core/utilits/widgets/custom_appbar.dart';
 
 import '../../../../../core/routing/app_routes_name.dart';
 import '../../../../../core/theme/colors.dart';
+import '../../../../../core/utilits/widgets/custom_head_text.dart';
+import '../../../../../core/utilits/widgets/custom_sub_head_text.dart';
+import '../../../../../core/utilits/widgets/custom_text_button.dart';
 import '../../../bussiness_logic/progress_indecator.dart';
 
 class FaceRecognationScreen extends StatefulWidget {
@@ -32,10 +36,10 @@ class _NationalIdCameraScreenState extends State<FaceRecognationScreen> {
 
   Future<void> _initializeCamera() async {
     final cameras = await availableCameras();
-    final backCamera = cameras.firstWhere(
-      (camera) => camera.lensDirection == CameraLensDirection.back,
+    final frontCamera = cameras.firstWhere(
+      (camera) => camera.lensDirection == CameraLensDirection.front,
     );
-    _controller = CameraController(backCamera, ResolutionPreset.high);
+    _controller = CameraController(frontCamera, ResolutionPreset.high);
     _initializeControllerFuture = _controller!.initialize();
     await _initializeControllerFuture;
     await _controller!.setFlashMode(FlashMode.off);
@@ -87,25 +91,16 @@ class _NationalIdCameraScreenState extends State<FaceRecognationScreen> {
           const SizedBox(height: 40),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
-              'صورة سيلفي',
-              style: TextStyle(
-                fontSize: 25,
-                fontFamily: 'IBMPLEXSANSARABICBold',
-              ),
-              textAlign: TextAlign.left,
+            child: CustomHeadText(
+              text: 'صورة سيلفي',
             ),
           ),
           const SizedBox(height: 20),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
-              'محتاجين صورة البطاقة الشخصية عشان تثبت إنك عايش في مصر وعلشان نقدر نأكد هويتك، بياناتك بتتراجع بأمان.',
-              style: TextStyle(
-                  fontSize: 16,
-                  fontFamily: 'IBMPLEXSANSARABICRegular',
-                  color: AppColors.gray),
-              textAlign: TextAlign.right,
+            child: CustomSubHeadText(
+              text:
+                  'محتاجين صورة البطاقة الشخصية عشان تثبت إنك عايش في مصر وعلشان نقدر نأكد هويتك، بياناتك بتتراجع بأمان.',
             ),
           ),
 
@@ -118,11 +113,15 @@ class _NationalIdCameraScreenState extends State<FaceRecognationScreen> {
                 child: AspectRatio(
                   aspectRatio: 16 / 9,
                   child: _capturedImage != null
-                      ? Image.file(
-                          _capturedImage!,
-                          width: double.infinity,
-                          height: double.infinity,
-                          fit: BoxFit.cover,
+                      ? Transform(
+                          alignment: Alignment.center,
+                          transform: Matrix4.rotationY(pi),
+                          child: Image.file(
+                            _capturedImage!,
+                            width: double.infinity,
+                            height: double.infinity,
+                            fit: BoxFit.cover,
+                          ),
                         )
                       : _controller == null
                           ? const Center(child: CircularProgressIndicator())
@@ -157,36 +156,18 @@ class _NationalIdCameraScreenState extends State<FaceRecognationScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
+                CustomTextButton(
                   onPressed: _acceptPicture,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primaryGreen,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 32, vertical: 12),
-                  ),
-                  child: const Text(
-                    'مقبولة',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontFamily: 'IBMPLEXSANSARABICBold'),
-                  ),
+                  text: 'مقبولة',
+                  width: 150,
                 ),
                 const SizedBox(width: 16),
-                OutlinedButton(
+                CustomTextButton(
                   onPressed: _resetPicture,
-                  style: OutlinedButton.styleFrom(
-                    side: const BorderSide(color: AppColors.primaryGreen),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 32, vertical: 12),
-                  ),
-                  child: const Text(
-                    'صورها تاني',
-                    style: TextStyle(
-                        color: AppColors.primaryGreen,
-                        fontSize: 18,
-                        fontFamily: 'IBMPLEXSANSARABICBold'),
-                  ),
+                  text: 'صورها تاني',
+                  width: 150,
+                  buttonColor: Colors.white,
+                  textColor: AppColors.primaryGreen,
                 ),
               ],
             ),

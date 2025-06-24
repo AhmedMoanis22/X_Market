@@ -28,4 +28,9 @@ class AppRoutesName {
   static const String forgotPasswordScreen = '/forgotPasswordScreen';
   static const String passwordRepeatScreen = '/passwordRepeatScreen';
   static const String verifyPasswordScreen = '/verifyPasswordScreen';
+  //profile Customization screen
+  static const String profileCustomizationScreen =
+      '/profileCustomizationScreen';
+  static const String profileCustomizationQuestionScreen =
+      '/profileCustomizationQuestionScreen';
 }
