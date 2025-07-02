@@ -33,4 +33,11 @@ class AppRoutesName {
       '/profileCustomizationScreen';
   static const String profileCustomizationQuestionScreen =
       '/profileCustomizationQuestionScreen';
+  static const String profileCustomizationResultScreen =
+      '/profileCustomizationResultScreen';
+  static const String profileCustomizationResultDetailsScreen =
+      '/profileCustomizationResultDetailsScreen';
+
+  static const String profileCustomizationChartScreen =
+      '/profileCustomizationChartScreen';
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 import '../../../../../core/routing/app_routes_name.dart';
@@ -8,6 +10,7 @@ import '../../../../../core/theme/colors.dart';
 import '../../../../../core/utilits/widgets/app_text_field.dart';
 import '../../../../../core/utilits/widgets/custom_appbar.dart';
 import '../../../../../core/utilits/widgets/custom_text_button.dart';
+import '../../../bussiness_logic/progress_indecator.dart';
 import '../../widget/custom_text_for_identification.dart';
 
 class CreatePasswordScreen extends StatelessWidget {
@@ -130,13 +133,43 @@ class CreatePasswordScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 20.h),
-                  child: CustomTextButton(
-                    onPressed: () {
-                      if (formKey.currentState!.validate()) {
-                        Get.toNamed(AppRoutesName.sign_up_with_national_id);
-                      }
-                    },
-                    text: 'التالي',
+                  child: Column(
+                    children: [
+                      BlocBuilder<ProgressIndicatorCubit, double>(
+                        builder: (context, progress) {
+                          return LinearProgressIndicator(
+                            value: progress,
+                            backgroundColor: Colors.grey[300],
+                            valueColor: const AlwaysStoppedAnimation<Color>(
+                              Colors.green,
+                            ),
+                          );
+                        },
+                      ),
+                      SizedBox(height: 18.h),
+                      CustomTextButton(
+                        onPressed: () {
+                          if (formKey.currentState!.validate()) {
+                            if (passwordController.text ==
+                                confirmPasswordController.text) {
+                              Get.toNamed(
+                                  AppRoutesName.sign_up_with_national_id);
+                              context.read<ProgressIndicatorCubit>().nextStep();
+                            } else {
+                              Fluttertoast.showToast(
+                                msg: 'كلمة السر غير متطابقة',
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                backgroundColor: Colors.red,
+                                textColor: Colors.white,
+                                fontSize: 16.0,
+                              );
+                            }
+                          }
+                        },
+                        text: 'التالي',
+                      ),
+                    ],
                   ),
                 ),
               ],

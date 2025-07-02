@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:x_market/core/routing/app_routes_name.dart';
 import 'package:x_market/core/utilits/widgets/custom_appbar.dart';
 
 import '../../../../../../../core/theme/colors.dart';
@@ -66,7 +68,7 @@ class _ProfileCustomizationQuestionsState
       _pageController.nextPage(
           duration: const Duration(milliseconds: 350), curve: Curves.easeInOut);
     } else {
-      // Navigator.pushNamed(context, '/nextScreen');
+      Get.toNamed(AppRoutesName.profileCustomizationResultScreen);
     }
   }
 

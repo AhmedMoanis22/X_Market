@@ -6,11 +6,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../features/sign_up/bussiness_logic/progress_indecator.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key});
+  const CustomAppBar({super.key, this.backgroundColor});
+  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: backgroundColor ?? Colors.white,
       automaticallyImplyLeading: false,
       actions: [
         Padding(
@@ -22,8 +24,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             },
             child: SvgPicture.asset(
               'assets/icons/arrow_back.svg',
-              width: 24.w, // Adjust width dynamically
-              height: 24.h, // Adjust height dynamically
+              width: 24.w,
+              height: 24.h,
             ),
           ),
         ),

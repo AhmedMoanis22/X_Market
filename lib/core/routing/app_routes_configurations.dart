@@ -6,6 +6,7 @@ import 'package:x_market/features/sign_up/view/screen/Sign_up_with_country/sign_
 import 'package:x_market/features/sign_up/view/screen/Sign_up_with_national_id_and_face_recognation/camera_national_id_screen.dart';
 import 'package:x_market/features/sign_up/view/screen/pin_code/confirm_pincode_screen.dart';
 import 'package:x_market/features/sign_up/view/screen/pin_code/create_pincode_screen.dart';
+import 'package:x_market/features/sign_up/view/screen/profile_customization/ui/screen/profile_customization_chart.dart';
 
 import '../../features/forget_password/ui/screen/forgot_password_screen.dart';
 import '../../features/login/view/screen/login_screen.dart';
@@ -20,6 +21,8 @@ import '../../features/sign_up/view/screen/create_passowrd/create_password_scree
 import '../../features/sign_up/view/screen/finish_steps_screen.dart';
 import '../../features/sign_up/view/screen/job_status/job_status_screen.dart';
 import '../../features/sign_up/view/screen/profile_customization/ui/screen/profile_customization_questions.dart';
+import '../../features/sign_up/view/screen/profile_customization/ui/screen/profile_customization_result.dart';
+import '../../features/sign_up/view/screen/profile_customization/ui/screen/profile_customization_result_details.dart';
 import '../../features/sign_up/view/screen/profile_customization/ui/screen/profile_customization_screen.dart';
 import '../../features/sign_up/view/screen/terms_and_conditions/terms_and_conditions_screen.dart';
 import 'app_routes_name.dart';
@@ -95,4 +98,14 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
       name: AppRoutesName.profileCustomizationQuestionScreen,
       page: () => const ProfileCustomizationQuestions()),
+  GetPage(
+      name: AppRoutesName.profileCustomizationResultScreen,
+      page: () => const ProfileCustomizationResult()),
+  GetPage(
+      name: AppRoutesName.profileCustomizationResultDetailsScreen,
+      page: () => const ProfileCustomizationResultDetails()),
+  GetPage(
+    name: AppRoutesName.profileCustomizationChartScreen,
+    page: () => const ProfileCustomizationChart(),
+  ),
 ];

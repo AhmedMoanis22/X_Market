@@ -124,7 +124,8 @@ class _JobStatusScreenState extends State<JobStatusScreen> {
                         value: progress,
                         backgroundColor: Colors.grey[300],
                         valueColor: const AlwaysStoppedAnimation<Color>(
-                            Color.fromARGB(255, 40, 53, 40)),
+                          Colors.green,
+                        ),
                       );
                     },
                   ),
@@ -137,6 +138,7 @@ class _JobStatusScreenState extends State<JobStatusScreen> {
                           ? () {
                               Get.toNamed(
                                   AppRoutesName.terms_and_conditions_screen);
+                              context.read<ProgressIndicatorCubit>().nextStep();
                             }
                           : null,
                       style: ElevatedButton.styleFrom(

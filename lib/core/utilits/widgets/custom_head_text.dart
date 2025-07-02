@@ -15,6 +15,7 @@ class CustomHeadText extends StatelessWidget {
           fontSize: 28.sp,
           fontFamily: 'IBMPLEXSANSARABICBold',
         ),
+        textAlign: TextAlign.right,
       ),
     );
   }

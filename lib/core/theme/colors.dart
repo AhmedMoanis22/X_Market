@@ -7,4 +7,7 @@ class AppColors {
   static const Color Neutral = Color(0xFFB3B3B3);
   static const Color brightBlue = Color(0xFF3C84F4);
   static const Color lightblue = Color(0xfffc6d9f4);
+  static const Color lightGray = Color(0xfffe0e8e6);
+  static const Color primaryYellow = Color(0xFFF4FF77);
+  static const Color primaryblue = Color(0xFF71A0E4);
 }

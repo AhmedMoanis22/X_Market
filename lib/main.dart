@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-            create: (context) => ProgressIndicatorCubit(totalSteps: 15)),
+            create: (context) => ProgressIndicatorCubit(totalSteps: 14)),
         BlocProvider(create: (context) => getIt<SignUpCubit>()),
       ],
       child: ScreenUtilInit(
