@@ -56,8 +56,10 @@ class _SignUpWithNumberState extends State<SignUpWithNumber> {
                         return "يجب إدخال رقم الهاتف";
                       }
                       // ignore: curly_braces_in_flow_control_structures
-                      else if (value.length < 5 || value.length > 12) {
+                      else if (value.length < 7 || value.length > 12) {
                         return "خطأ في رقم الموبايل";
+                      } else if (!value.startsWith('01')) {
+                        return "رقم الموبايل يجب أن يبدأ بـ 01";
                       }
                       return null;
                     },
@@ -135,20 +137,13 @@ class _SignUpWithNumberState extends State<SignUpWithNumber> {
                             return CustomTextButton(
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
-                                  context
-                                      .read<SignUpCubit>()
-                                      .updatePhone(phoneController.text);
+                                  context.read<SignUpCubit>().updatePhone(phoneController.text);
+                                  context.read<SignUpCubit>().updateBirthDate(birthdayController.text);
+                                  context.read<ProgressIndicatorCubit>().nextStep();
 
-                                  context
-                                      .read<SignUpCubit>()
-                                      .updateBirthDate(birthdayController.text);
-                                  context
-                                      .read<ProgressIndicatorCubit>()
-                                      .nextStep();
-
-                                  // context.read<SignUpCubit>().submit();
+                                  Get.toNamed(AppRoutesName.finish_little_steps); // ← هنا فقط
                                 }
-                                Get.toNamed(AppRoutesName.finish_little_steps);
+                                // لا تضع Get.toNamed خارج if
                               },
                               text: 'التالي',
                             );

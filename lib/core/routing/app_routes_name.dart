@@ -35,6 +35,8 @@ class AppRoutesName {
       '/profileCustomizationQuestionScreen';
   static const String profileCustomizationResultScreen =
       '/profileCustomizationResultScreen';
+  static const String profileCustomizationInvestment =
+      '/profileCustomizationInvestment';
   static const String profileCustomizationResultDetailsScreen =
       '/profileCustomizationResultDetailsScreen';
 

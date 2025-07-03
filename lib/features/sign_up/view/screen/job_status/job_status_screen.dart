@@ -37,81 +37,83 @@ class _JobStatusScreenState extends State<JobStatusScreen> {
         child: Column(
           children: [
             Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  SizedBox(height: 40.h),
-                  const CustomHeadText(
-                    text: 'الحالة الوظيفية',
-                  ),
-                  SizedBox(height: 20.h),
-                  const CustomSubHeadText(
-                    text:
-                        'اختار الحالة الوظيفية ليك سواء انت موظف أو طالب أو متقاعد.',
-                  ),
-                  SizedBox(height: 40.h),
-                  ...List.generate(
-                    statusOptions.length,
-                    (index) => Padding(
-                      padding: EdgeInsets.only(bottom: 12.h),
-                      child: InkWell(
-                        borderRadius: BorderRadius.circular(12.r),
-                        onTap: () {
-                          setState(() {
-                            _selectedStatus = index;
-                          });
-                        },
-                        child: Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 12.w, vertical: 8.h),
-                          decoration: BoxDecoration(
-                            border: Border.all(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    SizedBox(height: 40.h),
+                    const CustomHeadText(
+                      text: 'الحالة الوظيفية',
+                    ),
+                    SizedBox(height: 20.h),
+                    const CustomSubHeadText(
+                      text:
+                          'اختار الحالة الوظيفية ليك سواء انت موظف أو طالب أو متقاعد.',
+                    ),
+                    SizedBox(height: 40.h),
+                    ...List.generate(
+                      statusOptions.length,
+                      (index) => Padding(
+                        padding: EdgeInsets.only(bottom: 12.h),
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(12.r),
+                          onTap: () {
+                            setState(() {
+                              _selectedStatus = index;
+                            });
+                          },
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 12.w, vertical: 8.h),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: _selectedStatus == index
+                                    ? AppColors.primaryGreen
+                                    : AppColors.Neutral,
+                                width: 1.3,
+                              ),
+                              borderRadius: BorderRadius.circular(12.r),
                               color: _selectedStatus == index
-                                  ? AppColors.primaryGreen
-                                  : AppColors.Neutral,
-                              width: 1.3,
+                                  ? AppColors.secondaryGreen.withOpacity(0.2)
+                                  : Colors.white,
                             ),
-                            borderRadius: BorderRadius.circular(12.r),
-                            color: _selectedStatus == index
-                                ? AppColors.secondaryGreen.withOpacity(0.2)
-                                : Colors.white,
-                          ),
-                          child: Row(
-                            children: [
-                              Radio<int>(
-                                value: index,
-                                groupValue: _selectedStatus,
-                                onChanged: (value) {
-                                  setState(() {
-                                    _selectedStatus = value;
-                                  });
-                                },
-                                activeColor: AppColors.primaryGreen,
-                              ),
-                              SizedBox(width: 8.w),
-                              Expanded(
-                                child: Text(
-                                  statusOptions[index],
-                                  style: TextStyle(
-                                    fontFamily: 'IBMPLEXSANSARABICRegular',
-                                    fontSize: _selectedStatus == index
-                                        ? 18.sp
-                                        : 16.sp,
-                                    color: Colors.grey[700],
-                                    fontWeight: _selectedStatus == index
-                                        ? FontWeight.bold
-                                        : FontWeight.normal,
-                                  ),
-                                  textAlign: TextAlign.right,
+                            child: Row(
+                              children: [
+                                Radio<int>(
+                                  value: index,
+                                  groupValue: _selectedStatus,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      _selectedStatus = value;
+                                    });
+                                  },
+                                  activeColor: AppColors.primaryGreen,
                                 ),
-                              ),
-                            ],
+                                SizedBox(width: 8.w),
+                                Expanded(
+                                  child: Text(
+                                    statusOptions[index],
+                                    style: TextStyle(
+                                      fontFamily: 'IBMPLEXSANSARABICRegular',
+                                      fontSize: _selectedStatus == index
+                                          ? 18.sp
+                                          : 16.sp,
+                                      color: Colors.grey[700],
+                                      fontWeight: _selectedStatus == index
+                                          ? FontWeight.bold
+                                          : FontWeight.normal,
+                                    ),
+                                    textAlign: TextAlign.right,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             Padding(

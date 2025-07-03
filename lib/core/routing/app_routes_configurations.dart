@@ -7,6 +7,7 @@ import 'package:x_market/features/sign_up/view/screen/Sign_up_with_national_id_a
 import 'package:x_market/features/sign_up/view/screen/pin_code/confirm_pincode_screen.dart';
 import 'package:x_market/features/sign_up/view/screen/pin_code/create_pincode_screen.dart';
 import 'package:x_market/features/sign_up/view/screen/profile_customization/ui/screen/profile_customization_chart.dart';
+import 'package:x_market/features/sign_up/view/screen/profile_customization/ui/screen/profile_customization_result_investment.dart';
 
 import '../../features/forget_password/ui/screen/forgot_password_screen.dart';
 import '../../features/login/view/screen/login_screen.dart';
@@ -104,6 +105,9 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
       name: AppRoutesName.profileCustomizationResultDetailsScreen,
       page: () => const ProfileCustomizationResultDetails()),
+  GetPage(
+      name: AppRoutesName.profileCustomizationInvestment,
+      page: () => const ProfileCustomizationResultInvestment()),
   GetPage(
     name: AppRoutesName.profileCustomizationChartScreen,
     page: () => const ProfileCustomizationChart(),

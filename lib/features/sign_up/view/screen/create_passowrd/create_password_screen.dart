@@ -77,21 +77,6 @@ class CreatePasswordScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 30.h),
-                        const CustomTextForIdentification(
-                            text: "تأكيد كلمة السر"),
-                        SizedBox(height: 8.h),
-                        buildTextField(
-                          controller: confirmPasswordController,
-                          hint: "اكتب نفس كلمة السر ",
-                          validatorMessage: "يجب إدخال كلمة السر",
-                          obscureText: true,
-                          prefixIcon: Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child:
-                                SvgPicture.asset('assets/icons/eye_slash.svg'),
-                          ),
-                        ),
-                        SizedBox(height: 20.h),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
@@ -125,6 +110,21 @@ class CreatePasswordScreen extends StatelessWidget {
                               textAlign: TextAlign.right,
                             ),
                           ],
+                        ),
+                        SizedBox(height: 20.h),
+                        const CustomTextForIdentification(
+                            text: "تأكيد كلمة السر"),
+                        SizedBox(height: 8.h),
+                        buildTextField(
+                          controller: confirmPasswordController,
+                          hint: "اكتب نفس كلمة السر ",
+                          validatorMessage: "يجب إدخال كلمة السر",
+                          obscureText: true,
+                          prefixIcon: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child:
+                                SvgPicture.asset('assets/icons/eye_slash.svg'),
+                          ),
                         ),
                         SizedBox(height: 10.h), // مسافة بسيطة قبل الزر لو أردت
                       ],

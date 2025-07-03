@@ -24,59 +24,61 @@ class NationalIdScreen extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  const SizedBox(height: 40),
-                  const CustomHeadText(
-                    text: 'إثبات الهوية الشخصية وبطاقة الرقم القومي',
-                  ),
-                  const SizedBox(height: 20),
-                  const CustomSubHeadText(
-                    text:
-                        'محتاجين صورة البطاقة الشخصية عشان تثبت إنك عايش في مصر وعلشان نقدر نأكد هويتك. بياناتك بتتراجع بأمان.',
-                  ),
-                  const SizedBox(height: 40),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      const Text(
-                        'صورة بطاقة الرقم القومي وش وضهر',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontFamily: 'IBMPLEXSANSARABICRegular',
-                          color: AppColors.primaryGreen,
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    const SizedBox(height: 40),
+                    const CustomHeadText(
+                      text: 'إثبات الهوية الشخصية وبطاقة الرقم القومي',
+                    ),
+                    const SizedBox(height: 20),
+                    const CustomSubHeadText(
+                      text:
+                          'محتاجين صورة البطاقة الشخصية عشان تثبت إنك عايش في مصر وعلشان نقدر نأكد هويتك. بياناتك بتتراجع بأمان.',
+                    ),
+                    const SizedBox(height: 40),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        const Text(
+                          'صورة بطاقة الرقم القومي وش وضهر',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: 'IBMPLEXSANSARABICRegular',
+                            color: AppColors.primaryGreen,
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 20),
-                      SvgPicture.asset(
-                        'assets/icons/personalcard.svg',
-                        width: 50,
-                        height: 50,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      const Text(
-                        'صورة سيلفي للتحقق من الوجه',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontFamily: 'IBMPLEXSANSARABICRegular',
-                          color: AppColors.primaryGreen,
+                        const SizedBox(width: 20),
+                        SvgPicture.asset(
+                          'assets/icons/personalcard.svg',
+                          width: 50,
+                          height: 50,
                         ),
-                      ),
-                      const SizedBox(width: 20),
-                      SvgPicture.asset(
-                        'assets/icons/user-square.svg',
-                        width: 50,
-                        height: 50,
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        const Text(
+                          'صورة سيلفي للتحقق من الوجه',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: 'IBMPLEXSANSARABICRegular',
+                            color: AppColors.primaryGreen,
+                          ),
+                        ),
+                        const SizedBox(width: 20),
+                        SvgPicture.asset(
+                          'assets/icons/user-square.svg',
+                          width: 50,
+                          height: 50,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
             BlocBuilder<ProgressIndicatorCubit, double>(

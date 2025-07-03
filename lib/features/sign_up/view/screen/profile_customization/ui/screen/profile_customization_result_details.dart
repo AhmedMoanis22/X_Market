@@ -38,163 +38,165 @@ class ProfileCustomizationResultDetails extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: Column(
-              children: [
-                SizedBox(height: 40.h),
-                const CustomHeadText(text: 'الاستثمارات المقترحة لك'),
-                SizedBox(height: 10.h),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      height: 30.h,
-                      width: 100.w,
-                      decoration: BoxDecoration(
-                        color: AppColors.primaryblue,
-                        borderRadius: BorderRadius.circular(8.r),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text(
-                              'تعديل المبلغ',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(height: 40.h),
+                  const CustomHeadText(text: 'الاستثمارات المقترحة لك'),
+                  SizedBox(height: 10.h),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        height: 30.h,
+                        width: 100.w,
+                        decoration: BoxDecoration(
+                          color: AppColors.primaryblue,
+                          borderRadius: BorderRadius.circular(8.r),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text(
+                                'تعديل المبلغ',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                            SizedBox(width: 5.w),
-                            SvgPicture.asset(
-                              'assets/icons/edit.svg',
-                              color: Colors.white,
-                              width: 20.w,
-                              height: 20.h,
-                            ),
-                          ],
+                              SizedBox(width: 5.w),
+                              SvgPicture.asset(
+                                'assets/icons/edit.svg',
+                                color: Colors.white,
+                                width: 20.w,
+                                height: 20.h,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    Text(
-                      'عايز أستثــــــــمر \n 5000 جنيه',
-                      style: TextStyle(
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.bold,
+                      Text(
+                        'عايز أستثــــــــمر \n 5000 جنيه',
+                        style: TextStyle(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.right,
                       ),
-                      textAlign: TextAlign.right,
+                    ],
+                  ),
+                  SizedBox(height: 20.h),
+                  ...[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        const Icon(
+                          Icons.info_outline,
+                          color: Colors.grey,
+                        ),
+                        SizedBox(width: 8.w),
+                        const Text(
+                          'صناديق الذهب',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: 'IBMPLEXSANSARABICBold',
+                          ),
+                        ),
+                      ],
+                    ),
+                    const InvestmentCard(
+                      percentage: 0.7,
+                      title: 'BSB \n صندوق بلتون سبائك ',
+                      iconPath: 'assets/icons/gold.svg',
+                      color: Colors.blue,
+                      fontFamily: 'IBMPLEXSANSARABICSRegular',
+                      textColor: AppColors.gray,
+                      investedAmount: '5000',
+                    ),
+                    SizedBox(height: 10.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        const Icon(
+                          Icons.info_outline,
+                          color: Colors.grey,
+                        ),
+                        SizedBox(width: 8.w),
+                        const Text(
+                          'صناديق الدخل الثابت',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: 'IBMPLEXSANSARABICBold',
+                          ),
+                        ),
+                      ],
+                    ),
+                    const InvestmentCard(
+                      percentage: 0.2,
+                      title: 'ABR \n صندوق بريق',
+                      iconPath: 'assets/icons/gold.svg',
+                      color: Colors.orange,
+                      fontFamily: 'IBMPLEXSANSARABICSRegular',
+                      textColor: AppColors.gray,
+                      investedAmount: '3000',
+                    ),
+                    SizedBox(height: 10.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        const Icon(
+                          Icons.info_outline,
+                          color: Colors.grey,
+                        ),
+                        SizedBox(width: 8.w),
+                        const Text(
+                          'صناديق الأسهم',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: 'IBMPLEXSANSARABICBold',
+                          ),
+                        ),
+                      ],
+                    ),
+                    const InvestmentCard(
+                      percentage: 0.1,
+                      title: 'BTC \n صندوق بلتون مية مية ',
+                      iconPath: 'assets/icons/gold.svg',
+                      color: Colors.green,
+                      fontFamily: 'IBMPLEXSANSARABICSRegular',
+                      textColor: AppColors.gray,
+                      investedAmount: '2000',
                     ),
                   ],
-                ),
-                SizedBox(height: 20.h),
-                ...[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      const Icon(
-                        Icons.info_outline,
-                        color: Colors.grey,
-                      ),
-                      SizedBox(width: 8.w),
-                      const Text(
-                        'صناديق الذهب',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontFamily: 'IBMPLEXSANSARABICBold',
-                        ),
-                      ),
-                    ],
-                  ),
-                  const InvestmentCard(
-                    percentage: 0.7,
-                    title: 'BSB \n صندوق بلتون سبائك ',
-                    iconPath: 'assets/icons/gold.svg',
-                    color: Colors.blue,
-                    fontFamily: 'IBMPLEXSANSARABICSRegular',
-                    textColor: AppColors.gray,
-                    investedAmount: '5000',
-                  ),
-                  SizedBox(height: 10.h),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      const Icon(
-                        Icons.info_outline,
-                        color: Colors.grey,
-                      ),
-                      SizedBox(width: 8.w),
-                      const Text(
-                        'صناديق الدخل الثابت',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontFamily: 'IBMPLEXSANSARABICBold',
-                        ),
-                      ),
-                    ],
-                  ),
-                  const InvestmentCard(
-                    percentage: 0.2,
-                    title: 'ABR \n صندوق بريق',
-                    iconPath: 'assets/icons/gold.svg',
-                    color: Colors.orange,
-                    fontFamily: 'IBMPLEXSANSARABICSRegular',
-                    textColor: AppColors.gray,
-                    investedAmount: '3000',
-                  ),
-                  SizedBox(height: 10.h),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      const Icon(
-                        Icons.info_outline,
-                        color: Colors.grey,
-                      ),
-                      SizedBox(width: 8.w),
-                      const Text(
-                        'صناديق الأسهم',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontFamily: 'IBMPLEXSANSARABICBold',
-                        ),
-                      ),
-                    ],
-                  ),
-                  const InvestmentCard(
-                    percentage: 0.1,
-                    title: 'BTC \n صندوق بلتون مية مية ',
-                    iconPath: 'assets/icons/gold.svg',
-                    color: Colors.green,
-                    fontFamily: 'IBMPLEXSANSARABICSRegular',
-                    textColor: AppColors.gray,
-                    investedAmount: '2000',
-                  ),
+                  SizedBox(height: 20.h),
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    CustomTextButton(
+                      onPressed: () {
+                        Get.toNamed(
+                          AppRoutesName.profileCustomizationScreen,
+                        );
+                      },
+                      text: 'إعادة التقييم',
+                      width: 150,
+                      buttonColor: Colors.white,
+                      textColor: AppColors.primaryGreen,
+                    ),
+                    const SizedBox(width: 16),
+                    CustomTextButton(
+                      onPressed: () {
+                        Get.toNamed(
+                            AppRoutesName.profileCustomizationInvestment);
+                      },
+                      text: 'التالي',
+                      width: 150,
+                    ),
+                  ]),
+                  SizedBox(height: 20.h),
                 ],
-                const Spacer(),
-                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  CustomTextButton(
-                    onPressed: () {
-                      Get.toNamed(
-                        AppRoutesName.profileCustomizationScreen,
-                      );
-                    },
-                    text: 'إعادة التقييم',
-                    width: 150,
-                    buttonColor: Colors.white,
-                    textColor: AppColors.primaryGreen,
-                  ),
-                  const SizedBox(width: 16),
-                  CustomTextButton(
-                    onPressed: () {
-                      Get.toNamed(
-                          AppRoutesName.profileCustomizationChartScreen);
-                    },
-                    text: 'التالي',
-                    width: 150,
-                  ),
-                ]),
-                SizedBox(height: 20.h),
-              ],
+              ),
             ),
           ),
         ],
