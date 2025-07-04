@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:x_market/features/bottom_nav_bar/ui/screen/bottom_nav_bar_screen.dart';
 import 'package:x_market/features/forget_password/ui/screen/password_repeat_screen.dart';
 import 'package:x_market/features/forget_password/ui/screen/verify_password_screen.dart';
 import 'package:x_market/features/home_screen.dart';
@@ -6,8 +7,9 @@ import 'package:x_market/features/sign_up/view/screen/Sign_up_with_country/sign_
 import 'package:x_market/features/sign_up/view/screen/Sign_up_with_national_id_and_face_recognation/camera_national_id_screen.dart';
 import 'package:x_market/features/sign_up/view/screen/pin_code/confirm_pincode_screen.dart';
 import 'package:x_market/features/sign_up/view/screen/pin_code/create_pincode_screen.dart';
+import 'package:x_market/features/sign_up/view/screen/profile_customization/ui/screen/edit_investment_currency.dart';
 import 'package:x_market/features/sign_up/view/screen/profile_customization/ui/screen/profile_customization_chart.dart';
-import 'package:x_market/features/sign_up/view/screen/profile_customization/ui/screen/profile_customization_result_investment.dart';
+import 'package:x_market/features/wallet/ui/screen/wallet_screen.dart';
 
 import '../../features/forget_password/ui/screen/forgot_password_screen.dart';
 import '../../features/login/view/screen/login_screen.dart';
@@ -106,10 +108,19 @@ List<GetPage<dynamic>>? routes = [
       name: AppRoutesName.profileCustomizationResultDetailsScreen,
       page: () => const ProfileCustomizationResultDetails()),
   GetPage(
-      name: AppRoutesName.profileCustomizationInvestment,
-      page: () => const ProfileCustomizationResultInvestment()),
+      name: AppRoutesName.editInvestmentCurrency,
+      page: () => const EditInvestmentCurrency()),
   GetPage(
     name: AppRoutesName.profileCustomizationChartScreen,
     page: () => const ProfileCustomizationChart(),
+  ),
+  GetPage(
+    name: AppRoutesName.bottomNavBarScreen,
+    page: () => const BottomNavBarScreen(),
+  ),
+  //wallet screen
+  GetPage(
+    name: AppRoutesName.walletScreen,
+    page: () => const WalletScreen(),
   ),
 ];

@@ -47,34 +47,40 @@ class ProfileCustomizationResultDetails extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
-                        height: 30.h,
-                        width: 100.w,
-                        decoration: BoxDecoration(
-                          color: AppColors.primaryblue,
-                          borderRadius: BorderRadius.circular(8.r),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Text(
-                                'تعديل المبلغ',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
+                      GestureDetector(
+                        onTap: () {
+                          Get.toNamed(AppRoutesName.editInvestmentCurrency);
+                        },
+                        child: Container(
+                          height: 30.h,
+                          width: 100.w,
+                          decoration: BoxDecoration(
+                            color: AppColors.primaryblue,
+                            borderRadius: BorderRadius.circular(8.r),
+                          ),
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text(
+                                  'تعديل المبلغ',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(width: 5.w),
-                              SvgPicture.asset(
-                                'assets/icons/edit.svg',
-                                color: Colors.white,
-                                width: 20.w,
-                                height: 20.h,
-                              ),
-                            ],
+                                SizedBox(width: 5.w),
+                                SvgPicture.asset(
+                                  'assets/icons/edit.svg',
+                                  color: Colors.white,
+                                  width: 20.w,
+                                  height: 20.h,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -110,11 +116,11 @@ class ProfileCustomizationResultDetails extends StatelessWidget {
                     const InvestmentCard(
                       percentage: 0.7,
                       title: 'BSB \n صندوق بلتون سبائك ',
-                      iconPath: 'assets/icons/gold.svg',
+                      pngiconPath: 'assets/images/belton.png',
                       color: Colors.blue,
                       fontFamily: 'IBMPLEXSANSARABICSRegular',
                       textColor: AppColors.gray,
-                      investedAmount: '5000',
+                      investedAmount: 'استثمر 5000 ج.م',
                     ),
                     SizedBox(height: 10.h),
                     Row(
@@ -137,11 +143,11 @@ class ProfileCustomizationResultDetails extends StatelessWidget {
                     const InvestmentCard(
                       percentage: 0.2,
                       title: 'ABR \n صندوق بريق',
-                      iconPath: 'assets/icons/gold.svg',
+                      pngiconPath: 'assets/images/brik.png',
                       color: Colors.orange,
                       fontFamily: 'IBMPLEXSANSARABICSRegular',
                       textColor: AppColors.gray,
-                      investedAmount: '3000',
+                      investedAmount: 'استثمر 3000 ج.م',
                     ),
                     SizedBox(height: 10.h),
                     Row(
@@ -164,11 +170,11 @@ class ProfileCustomizationResultDetails extends StatelessWidget {
                     const InvestmentCard(
                       percentage: 0.1,
                       title: 'BTC \n صندوق بلتون مية مية ',
-                      iconPath: 'assets/icons/gold.svg',
+                      pngiconPath: 'assets/images/belton.png',
                       color: Colors.green,
                       fontFamily: 'IBMPLEXSANSARABICSRegular',
                       textColor: AppColors.gray,
-                      investedAmount: '2000',
+                      investedAmount: 'استثمر 2000 ج.م',
                     ),
                   ],
                   SizedBox(height: 20.h),
@@ -188,7 +194,8 @@ class ProfileCustomizationResultDetails extends StatelessWidget {
                     CustomTextButton(
                       onPressed: () {
                         Get.toNamed(
-                            AppRoutesName.profileCustomizationInvestment);
+                          AppRoutesName.bottomNavBarScreen,
+                        );
                       },
                       text: 'التالي',
                       width: 150,

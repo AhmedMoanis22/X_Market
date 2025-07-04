@@ -69,6 +69,16 @@ class _VerifyPasswordScreenState extends State<VerifyPasswordScreen> {
                       fontFamily: 'IBMPLEXSANSARABICSRegular',
                     ),
                   ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Text(
+                    ' إعادة إرسال الرمز خلال (59 ثانية)',
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontFamily: 'IBMPLEXSANSARABICSRegular',
+                        color: AppColors.brightBlue),
+                  ),
                   SizedBox(height: screenHeight * 0.03),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

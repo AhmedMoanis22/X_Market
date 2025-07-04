@@ -35,11 +35,16 @@ class AppRoutesName {
       '/profileCustomizationQuestionScreen';
   static const String profileCustomizationResultScreen =
       '/profileCustomizationResultScreen';
-  static const String profileCustomizationInvestment =
-      '/profileCustomizationInvestment';
+  static const String editInvestmentCurrency = '/editInvestmentCurrency';
   static const String profileCustomizationResultDetailsScreen =
       '/profileCustomizationResultDetailsScreen';
 
   static const String profileCustomizationChartScreen =
       '/profileCustomizationChartScreen';
+
+  // BottomNavBar
+  static const String bottomNavBarScreen = '/bottomNavBarScreen';
+
+  //wallrtScreen
+  static const String walletScreen = '/walletScreen';
 }

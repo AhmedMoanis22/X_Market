@@ -15,23 +15,23 @@ class FinishStepsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(32),
-                bottomRight: Radius.circular(32),
-              ),
-              child: Image.asset(
-                'assets/images/Little_more_steps.png',
-                width: double.infinity,
-                height: MediaQuery.of(context).size.height * 0.35,
-                fit: BoxFit.fill,
-              ),
+      body: Column(
+        children: [
+          ClipRRect(
+            borderRadius: const BorderRadius.only(
+              bottomLeft: Radius.circular(32),
+              bottomRight: Radius.circular(32),
             ),
-            const SizedBox(height: 20),
-            SizedBox(
+            child: Image.asset(
+              'assets/images/Little_more_steps.png',
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height * 0.35,
+              fit: BoxFit.fill,
+            ),
+          ),
+          const SizedBox(height: 20),
+          Expanded(
+            child: SizedBox(
               width: double.infinity,
               child: Padding(
                 padding:
@@ -73,7 +73,7 @@ class FinishStepsScreen extends StatelessWidget {
                         style: TextStyle(color: Colors.blue),
                       ),
                     ),
-                    const SizedBox(height: 24), // بدل Spacer
+                    const Spacer(),
                     BlocBuilder<ProgressIndicatorCubit, double>(
                       builder: (context, progress) {
                         return LinearProgressIndicator(
@@ -96,8 +96,8 @@ class FinishStepsScreen extends StatelessWidget {
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

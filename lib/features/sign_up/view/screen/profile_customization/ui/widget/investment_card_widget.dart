@@ -1,24 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:x_market/core/theme/colors.dart';
 
 class InvestmentCard extends StatelessWidget {
   final double percentage;
   final String title;
-  final String iconPath;
+  final String? svgiconPath;
+  final String? pngiconPath;
   final Color color;
   final String? fontFamily;
   final Color? textColor;
   final String? investedAmount; // 🆕 المبلغ الاختياري
+  final bool? payment;
+  final bool? isTrade;
+  final Widget? isImageorText;
+  final Gradient? gradientBackground;
 
   const InvestmentCard({
     super.key,
     required this.percentage,
     required this.title,
-    required this.iconPath,
+    this.svgiconPath,
     required this.color,
     this.fontFamily,
     this.textColor,
-    this.investedAmount, // 🆕
+    this.investedAmount,
+    this.pngiconPath,
+    this.payment,
+    this.isTrade,
+    this.isImageorText,
+    this.gradientBackground, // 🆕
   });
 
   @override
@@ -30,8 +41,9 @@ class InvestmentCard extends StatelessWidget {
         return Container(
           margin: const EdgeInsets.symmetric(vertical: 8),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: gradientBackground == null ? Colors.white : null,
             borderRadius: BorderRadius.circular(12),
+            gradient: gradientBackground,
             border: Border.all(
               color: Colors.black.withOpacity(0.1),
               width: 1.5,
@@ -46,28 +58,30 @@ class InvestmentCard extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(
-                      height: 50,
-                      width: 50,
-                      child: Stack(
-                        fit: StackFit.expand,
-                        children: [
-                          CircularProgressIndicator(
-                            value: value,
-                            strokeWidth: 6,
-                            backgroundColor: Colors.grey[200],
-                            color: color,
-                          ),
-                          Center(
-                            child: Text(
-                              '${(value * 100).toInt()}%',
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.bold),
+                    isTrade == null
+                        ? SizedBox(
+                            height: 50,
+                            width: 50,
+                            child: Stack(
+                              fit: StackFit.expand,
+                              children: [
+                                CircularProgressIndicator(
+                                  value: value,
+                                  strokeWidth: 6,
+                                  backgroundColor: Colors.grey[200],
+                                  color: color,
+                                ),
+                                Center(
+                                  child: Text(
+                                    '${(value * 100).toInt()}%',
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
+                          )
+                        : isImageorText!,
                     Row(
                       children: [
                         Text(
@@ -80,7 +94,14 @@ class InvestmentCard extends StatelessWidget {
                           textAlign: TextAlign.right,
                         ),
                         const SizedBox(width: 16),
-                        SvgPicture.asset(iconPath, height: 30, width: 30),
+                        if (svgiconPath != null)
+                          SvgPicture.asset(svgiconPath!, height: 30, width: 30),
+                        if (pngiconPath != null)
+                          Image.asset(
+                            pngiconPath!,
+                            height: 30,
+                            width: 30,
+                          ),
                       ],
                     ),
                   ],
@@ -100,10 +121,28 @@ class InvestmentCard extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Icon(Icons.arrow_back_ios,
-                          size: 16, color: Colors.grey),
+                      payment == null
+                          ? const Icon(Icons.arrow_back_ios,
+                              size: 16, color: Colors.grey)
+                          : Container(
+                              width: 75,
+                              height: 25,
+                              decoration: const BoxDecoration(
+                                color: AppColors.primaryGreen,
+                              ),
+                              child: const Center(
+                                child: Text(
+                                  'ايداع الحساب',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 10,
+                                      color: Colors.white,
+                                      fontFamily: 'IBMPLEXSANSARABICSRegular'),
+                                ),
+                              ),
+                            ),
                       Text(
-                        'استثمر $investedAmount ج.م',
+                        investedAmount!,
                         style:
                             const TextStyle(fontSize: 14, color: Colors.grey),
                       ),

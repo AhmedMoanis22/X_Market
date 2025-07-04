@@ -4,26 +4,23 @@ import 'package:get/get.dart';
 import 'package:x_market/core/routing/app_routes_name.dart';
 import 'package:x_market/core/utilits/widgets/custom_appbar.dart';
 import 'package:x_market/core/utilits/widgets/custom_text_button.dart';
+
 import '../../../../../../../core/theme/colors.dart';
 import '../../../../../../../core/utilits/widgets/custom_head_text.dart';
 import '../../../../../../../core/utilits/widgets/custom_sub_head_text.dart';
 
-class ProfileCustomizationResultInvestment extends StatefulWidget {
-  const ProfileCustomizationResultInvestment({super.key});
+class EditInvestmentCurrency extends StatefulWidget {
+  const EditInvestmentCurrency({super.key});
 
   @override
-  State<ProfileCustomizationResultInvestment> createState() =>
-      _ProfileCustomizationResultInvestmentState();
+  State<EditInvestmentCurrency> createState() => _EditInvestmentCurrencyState();
 }
 
-class _ProfileCustomizationResultInvestmentState
-    extends State<ProfileCustomizationResultInvestment> {
+class _EditInvestmentCurrencyState extends State<EditInvestmentCurrency> {
   String amount = '0';
   bool isMonthly = false;
   String enteredPin = "";
   final int pinLength = 4;
-  
-
 
   void _addDigit(String digit) {
     setState(() {
@@ -101,7 +98,7 @@ class _ProfileCustomizationResultInvestmentState
                           ),
                         ),
                         Text(
-                          '$amount',
+                          amount,
                           style: TextStyle(
                             fontSize: 45.sp,
                             fontWeight: FontWeight.bold,
@@ -193,27 +190,30 @@ class _ProfileCustomizationResultInvestmentState
                       width: 320.w,
                     ),
                     SizedBox(height: 20.h),
-                  GridView.builder(
-                    shrinkWrap: true,
-                    itemCount: 12,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      mainAxisSpacing: screenHeight * 0.02,
-                      crossAxisSpacing: screenWidth * 0.03,
-                      childAspectRatio: 1.5,
+                    GridView.builder(
+                      shrinkWrap: true,
+                      itemCount: 12,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        mainAxisSpacing: screenHeight * 0.02,
+                        crossAxisSpacing: screenWidth * 0.03,
+                        childAspectRatio: 1.5,
+                      ),
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        if (index == 9) return const SizedBox();
+                        if (index == 11) {
+                          return _buildKey("", _removeLastDigit,
+                              Icons.backspace); // استخدم دالة الحذف للـ amount
+                        }
+                        return _buildKey(
+                          (index == 10) ? "0" : "${index + 1}",
+                          () => _addDigit((index == 10)
+                              ? "0"
+                              : "${index + 1}"), // استخدم دالة الإضافة للـ amount
+                        );
+                      },
                     ),
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      if (index == 9) return const SizedBox();
-                      if (index == 11) {
-                        return _buildKey("", _removeLastDigit, Icons.backspace); // استخدم دالة الحذف للـ amount
-                      }
-                      return _buildKey(
-                        (index == 10) ? "0" : "${index + 1}",
-                        () => _addDigit((index == 10) ? "0" : "${index + 1}"), // استخدم دالة الإضافة للـ amount
-                      );
-                    },
-                  ),
                   ],
                 ),
               )),
@@ -221,7 +221,8 @@ class _ProfileCustomizationResultInvestmentState
       ),
     );
   }
-    Widget _buildKey(String number, VoidCallback onTap, [IconData? icon]) {
+
+  Widget _buildKey(String number, VoidCallback onTap, [IconData? icon]) {
     return GestureDetector(
       onTap: onTap,
       child: Container(

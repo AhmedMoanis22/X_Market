@@ -147,19 +147,19 @@ class ProfileCustomizationResult extends StatelessWidget {
                     const InvestmentCard(
                       percentage: 0.7,
                       title: 'صناديق الذهب',
-                      iconPath: 'assets/icons/gold.svg',
+                      svgiconPath: 'assets/icons/gold.svg',
                       color: Colors.blue,
                     ),
                     const InvestmentCard(
                       percentage: 0.2,
                       title: 'صناديق الدخل الثابت',
-                      iconPath: 'assets/icons/fixed_income.svg',
+                      svgiconPath: 'assets/icons/fixed_income.svg',
                       color: Colors.orange,
                     ),
                     const InvestmentCard(
                       percentage: 0.1,
                       title: 'صناديق الأسهم',
-                      iconPath: 'assets/icons/stocks.svg',
+                      svgiconPath: 'assets/icons/stocks.svg',
                       color: Colors.green,
                     ),
                   ],

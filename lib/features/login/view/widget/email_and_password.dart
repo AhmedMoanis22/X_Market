@@ -218,12 +218,13 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
                 builder: (context, state) {
                   return CustomTextButton(
                     onPressed: () {
-                      if (formKey.currentState!.validate()) {
-                        context.read<LoginCubit>().usrtLogin(
-                              email: emailController.text,
-                              password: passwordController.text,
-                            );
-                      }
+                      // if (formKey.currentState!.validate()) {
+                      //   context.read<LoginCubit>().usrtLogin(
+                      //         email: emailController.text,
+                      //         password: passwordController.text,
+                      //       );
+                      // }
+                      Get.toNamed(AppRoutesName.bottomNavBarScreen);
                     },
                     text: 'تسجيل الدخول',
                   );
