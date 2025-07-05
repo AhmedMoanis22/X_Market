@@ -47,4 +47,5 @@ class AppRoutesName {
 
   //wallrtScreen
   static const String walletScreen = '/walletScreen';
+  static const String paymentScreen = '/paymentScreen';
 }

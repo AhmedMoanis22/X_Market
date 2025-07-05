@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:x_market/core/routing/app_routes_name.dart';
 import 'package:x_market/core/utilits/widgets/custom_appbar.dart';
 import 'package:x_market/core/utilits/widgets/custom_text_button.dart';
+import 'package:x_market/core/utilits/widgets/transaction_text.dart';
 
 import '../../../../../../../core/theme/colors.dart';
 import '../../../../../../../core/utilits/widgets/custom_head_text.dart';
@@ -119,61 +120,25 @@ class _EditInvestmentCurrencyState extends State<EditInvestmentCurrency> {
                           child: Row(
                             children: [
                               // زر "مرة واحدة"
-                              GestureDetector(
+                              TransactionText(
+                                text: 'مرة واحدة',
+                                selected: !isMonthly,
                                 onTap: () {
                                   setState(() {
                                     isMonthly = false;
                                   });
                                 },
-                                child: AnimatedContainer(
-                                  duration: const Duration(milliseconds: 200),
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 10.w, vertical: 8.h),
-                                  decoration: BoxDecoration(
-                                    color: !isMonthly
-                                        ? AppColors.primaryGreen
-                                        : Colors.transparent,
-                                    borderRadius: BorderRadius.circular(24.r),
-                                  ),
-                                  child: Text(
-                                    'مرة واحدة',
-                                    style: TextStyle(
-                                        color: !isMonthly
-                                            ? Colors.white
-                                            : Colors.black.withOpacity(0.5),
-                                        fontSize: 16.sp,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: 'IBMPLEXSANSARABICRegular'),
-                                  ),
-                                ),
                               ),
-                              GestureDetector(
+                              SizedBox(width: 8.w),
+                              // زر "شهري"   
+                              TransactionText(
+                                text: 'شهري',
+                                selected: isMonthly,
                                 onTap: () {
                                   setState(() {
                                     isMonthly = true;
                                   });
                                 },
-                                child: AnimatedContainer(
-                                  duration: const Duration(milliseconds: 200),
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 10.w, vertical: 8.h),
-                                  decoration: BoxDecoration(
-                                    color: isMonthly
-                                        ? AppColors.primaryGreen
-                                        : Colors.transparent,
-                                    borderRadius: BorderRadius.circular(20.r),
-                                  ),
-                                  child: Text(
-                                    'شهري',
-                                    style: TextStyle(
-                                        color: isMonthly
-                                            ? Colors.white
-                                            : AppColors.primaryGreen,
-                                        fontSize: 16.sp,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: 'IBMPLEXSANSARABICRegular'),
-                                  ),
-                                ),
                               ),
                             ],
                           ),

@@ -9,6 +9,7 @@ import 'package:x_market/features/sign_up/view/screen/pin_code/confirm_pincode_s
 import 'package:x_market/features/sign_up/view/screen/pin_code/create_pincode_screen.dart';
 import 'package:x_market/features/sign_up/view/screen/profile_customization/ui/screen/edit_investment_currency.dart';
 import 'package:x_market/features/sign_up/view/screen/profile_customization/ui/screen/profile_customization_chart.dart';
+import 'package:x_market/features/wallet/ui/screen/payment_screen.dart';
 import 'package:x_market/features/wallet/ui/screen/wallet_screen.dart';
 
 import '../../features/forget_password/ui/screen/forgot_password_screen.dart';
@@ -122,5 +123,9 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
     name: AppRoutesName.walletScreen,
     page: () => const WalletScreen(),
+  ),
+    GetPage(
+    name: AppRoutesName.paymentScreen,
+    page: () => const PaymentScreen(),
   ),
 ];

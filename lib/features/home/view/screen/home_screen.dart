@@ -130,6 +130,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
+  // ignore: unused_element
   Widget _buildStepItem(String iconPath, String label, bool isActive) {
     return Column(
       children: [

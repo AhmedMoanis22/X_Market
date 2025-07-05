@@ -57,6 +57,7 @@ class BottomNavBarScreen extends StatelessWidget {
                           child: SvgPicture.asset(
                             'assets/icons/${icons[index]}',
                             height: 30,
+                            // ignore: deprecated_member_use
                             color: isSelected
                                 ? AppColors.primaryGreen
                                 : AppColors.moreGray,

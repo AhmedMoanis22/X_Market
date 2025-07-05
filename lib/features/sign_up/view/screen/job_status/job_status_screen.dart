@@ -74,6 +74,7 @@ class _JobStatusScreenState extends State<JobStatusScreen> {
                               ),
                               borderRadius: BorderRadius.circular(12.r),
                               color: _selectedStatus == index
+                                  // ignore: deprecated_member_use
                                   ? AppColors.secondaryGreen.withOpacity(0.2)
                                   : Colors.white,
                             ),

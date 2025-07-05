@@ -194,7 +194,7 @@ class ProfileCustomizationResultDetails extends StatelessWidget {
                     CustomTextButton(
                       onPressed: () {
                         Get.toNamed(
-                          AppRoutesName.bottomNavBarScreen,
+                          AppRoutesName.editInvestmentCurrency,
                         );
                       },
                       text: 'التالي',

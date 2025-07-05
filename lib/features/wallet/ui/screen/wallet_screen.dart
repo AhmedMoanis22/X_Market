@@ -1,19 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:x_market/core/theme/colors.dart';
+import 'package:x_market/core/utilits/widgets/transaction_text.dart';
+import 'package:x_market/features/wallet/ui/screen/transactions_screen.dart';
 
-class WalletScreen extends StatelessWidget {
+class WalletScreen extends StatefulWidget {
   const WalletScreen({super.key});
 
   @override
+  State<WalletScreen> createState() => _WalletScreenState();
+}
+
+class _WalletScreenState extends State<WalletScreen> {
+  @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+
+    int selectedType = 0;
+    final List<String> types = [
+      'الكل',
+      'التمويل',
+      'الاستثمار',
+    ];
+
     return Directionality(
       textDirection: TextDirection.ltr,
       child: Scaffold(
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(90),
           child: Container(
-            padding: const EdgeInsets.symmetric(vertical: 10),
+            padding: EdgeInsets.symmetric(
+              vertical: screenHeight * 0.025,
+            ),
             color: AppColors.primaryGreen,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -63,201 +82,182 @@ class WalletScreen extends StatelessWidget {
             ),
           ),
         ),
-        body: Column(
-          children: [
-            Stack(
-              children: [
-                Image.asset(
-                  'assets/images/wallet_background.png',
-                  width: double.infinity,
-                  height: 300,
-                  fit: BoxFit.fill,
+        body: SafeArea(
+          child: Column(
+            children: [
+              // خلفية المحفظة والرصيد
+              SizedBox(
+                height: screenHeight * 0.32,
+                width: double.infinity,
+                child: Stack(
+                  children: [
+                    Image.asset(
+                      'assets/images/wallet_background.png',
+                      width: double.infinity,
+                      height: double.infinity,
+                      fit: BoxFit.fill,
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Text(
+                            'رصيد المحفظة',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                            ),
+                          ),
+                          const SizedBox(height: 5),
+                          const Text(
+                            'ج.م 0.00',
+                            style: TextStyle(
+                              fontSize: 32,
+                              color: Colors.yellowAccent,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: screenHeight * 0.025),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              ElevatedButton.icon(
+                                onPressed: () {},
+                                icon: SvgPicture.asset(
+                                  'assets/icons/received.svg',
+                                ),
+                                label: const Text('سحب'),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      // ignore: deprecated_member_use
+                                      Colors.white.withOpacity(0.2),
+                                  foregroundColor: Colors.yellowAccent,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                ),
+                              ),
+                              ElevatedButton.icon(
+                                onPressed: () {},
+                                icon: SvgPicture.asset(
+                                  'assets/icons/send.svg',
+                                ),
+                                label: const Text('إيداع'),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      Colors.white.withOpacity(0.2),
+                                  foregroundColor: Colors.yellowAccent,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-                Positioned.fill(
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Text(
-                          'رصيد المحفظة',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                          ),
-                        ),
-                        const SizedBox(height: 5),
-                        const Text(
-                          'ج.م 0.00',
-                          style: TextStyle(
-                            fontSize: 32,
-                            color: Colors.yellowAccent,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            ElevatedButton.icon(
-                              onPressed: () {},
-                              icon: SvgPicture.asset(
-                                'assets/icons/received.svg',
-                              ),
-                              label: const Text('سحب'),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.white.withOpacity(0.2),
-                                foregroundColor: Colors.yellowAccent,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                              ),
-                            ),
-                            ElevatedButton.icon(
-                              onPressed: () {},
-                              icon: SvgPicture.asset(
-                                'assets/icons/send.svg',
-                              ),
-                              label: const Text('إيداع'),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.white.withOpacity(0.2),
-                                foregroundColor: Colors.yellowAccent,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+              ),
+              // مسافة مرنة
+              const Spacer(),
+              // صورة فارغة ونص
+              Column(
+                children: [
+                  SizedBox(
+                    height: screenHeight * 0.13,
+                    child: Image.asset('assets/images/emptyInbox.png'),
+                  ),
+                  const SizedBox(height: 10),
+                  const Text(
+                    'معندكش أي معاملات جديدة حاليًا',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: AppColors.gray,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Container(
-                        width: 75,
-                        padding: const EdgeInsets.symmetric(vertical: 10),
-                        decoration: BoxDecoration(
-                          color: AppColors.Neutral,
-                          border: Border.all(color: Colors.white),
-                          borderRadius: BorderRadius.circular(25),
-                        ),
-                        alignment: Alignment.center,
-                        child: const Text(
-                          'عرض الكل',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                          ),
-                        ),
-                      ),
-                      const Spacer(),
-                      const Text(
-                        'أحدث المعاملات',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'IBMPLEXSANSARABICBold',
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      SvgPicture.asset(
-                        'assets/icons/frame.svg',
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Row(
+                ],
+              ),
+              // مسافة مرنة
+              const Spacer(),
+              // أحدث المعاملات في الأسفل
+              Padding(
+                padding: EdgeInsets.only(bottom: screenHeight * 0.025),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Container(
                           width: 75,
                           padding: const EdgeInsets.symmetric(vertical: 10),
                           decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: AppColors.primaryGreen),
+                            color: AppColors.Neutral,
+                            border: Border.all(color: Colors.white),
                             borderRadius: BorderRadius.circular(25),
                           ),
                           alignment: Alignment.center,
                           child: const Text(
-                            'الاستثمار',
-                            style: TextStyle(
-                              color: AppColors.primaryGreen,
-                              fontSize: 14,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        Container(
-                          width: 75,
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: AppColors.primaryGreen),
-                            borderRadius: BorderRadius.circular(25),
-                          ),
-                          alignment: Alignment.center,
-                          child: const Text(
-                            'التمويل',
-                            style: TextStyle(
-                              color: AppColors.primaryGreen,
-                              fontSize: 14,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        // زر "الكل"
-                        Container(
-                          width: 75,
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          decoration: BoxDecoration(
-                            color: AppColors.primaryGreen,
-                            borderRadius: BorderRadius.circular(25),
-                          ),
-                          alignment: Alignment.center,
-                          child: const Text(
-                            'الكل',
+                            'عرض الكل',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 14,
                             ),
                           ),
                         ),
+                        const Spacer(),
+                        TextButton(
+                          onPressed: () {
+                            navigator?.push(
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const TransactionsScreen(),
+                              ),
+                            );
+                          },
+                          child: const Text(
+                            'أحدث المعاملات',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontFamily: 'IBMPLEXSANSARABICBold',
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        SvgPicture.asset(
+                          'assets/icons/frame.svg',
+                        ),
                       ],
                     ),
-                  ),
-                ],
+                    const SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: List.generate(
+                        types.length,
+                        (i) => Padding(
+                          padding: EdgeInsets.only(left: i == 0 ? 0 : 8),
+                          child: TransactionText(
+                            text: types[types.length - 1 - i],
+                            selected: selectedType == types.length - 1 - i,
+                            onTap: () {
+                              setState(() {
+                                selectedType = types.length - 1 - i;
+                              });
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(height: 30),
-            Image.asset('assets/images/emptyInbox.png'),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              'معندكش أي معاملات جديدة حاليًا',
-              style: TextStyle(
-                fontSize: 16,
-                color: AppColors.gray,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

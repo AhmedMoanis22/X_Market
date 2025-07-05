@@ -14,6 +14,7 @@ class LoginScreen extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            // ignore: deprecated_member_use
             backgroundColor: Colors.white.withOpacity(0.5),
             automaticallyImplyLeading: false,
             floating: true,

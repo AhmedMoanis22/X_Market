@@ -57,7 +57,10 @@ class ProfileCustomizationScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CustomTextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.toNamed(
+                      AppRoutesName.walletScreen);
+                  },
                   text: '! مش دلوقتي ',
                   width: 150,
                   buttonColor: Colors.white,
