@@ -19,7 +19,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
         borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
       ),
       builder: (_) {
-        return DepositWithdrawOptions();
+        return const DepositWithdrawOptions();
       },
     );
   }
@@ -48,91 +48,70 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
           style: TextStyle(
             color: Colors.white,
             fontSize: 20,
-            fontFamily: 'IBMPLEXSANSARABICRegular',
+            fontFamily: 'IBMPLEXSANSARABICBold',
           ),
         ),
         backgroundColor: AppColors.primaryGreen,
-        leading: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            const Padding(
-              padding: EdgeInsets.all(10),
-              child: FittedBox(
-                fit: BoxFit.scaleDown,
-              ),
+        leading: Center(
+          child: GestureDetector(
+            onTap: () => _showBottomSheet(context),
+            child: const Text(
+              'إيداع',
+              style: TextStyle(color: Colors.white),
             ),
-            TextButton(
-              onPressed: (
-              ) => _showBottomSheet(context),
-              child:  const Text(
-                'إيداع',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          ],
-
+          ),
         ),
       ),
-      body: SafeArea(
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            return Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: screenWidth * 0.03,
-                    vertical: screenHeight * 0.02,
-                  ),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: List.generate(
-                        types.length,
-                        (i) => Padding(
-                          padding: EdgeInsets.only(left: i == 0 ? 0 : 8),
-                          child: TransactionText(
-                            text: types[types.length - 1 - i],
-                            selected: selectedType == types.length - 1 - i,
-                            onTap: () {
-                              setState(() {
-                                selectedType = types.length - 1 - i;
-                              });
-                            },
-                          ),
-                        ),
-                      ),
-                    ),
+      body: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: screenHeight * 0.02,
+              horizontal: screenWidth * 0.04,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: List.generate(
+                types.length,
+                (i) => Padding(
+                  padding: EdgeInsets.only(left: i == 0 ? 0 : 8),
+                  child: TransactionText(
+                    text: types[types.length - 1 - i],
+                    selected: selectedType == types.length - 1 - i,
+                    onTap: () {
+                      setState(() {
+                        selectedType = types.length - 1 - i;
+                      });
+                    },
                   ),
                 ),
-                SizedBox(height: screenHeight * 0.04),
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: screenHeight * 0.18,
-                        child: Image.asset(
-                          'assets/images/emptyInbox.png',
-                          fit: BoxFit.contain,
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      const Text(
-                        'معندكش أي معاملات حاليا',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontFamily: 'IBMPLEXSANSARABICSRegular',
-                        ),
-                      ),
-                    ],
+              ),
+            ),
+          ),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: screenHeight * 0.18,
+                  child: Image.asset(
+                    'assets/images/emptyInbox.png',
+                    fit: BoxFit.contain,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                const Text(
+                  'معندكش أي معاملات حاليا',
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontFamily: 'IBMPLEXSANSARABICSRegular',
                   ),
                 ),
               ],
-            );
-          },
-        ),
+            ),
+          ),
+        ],
       ),
     );
   }

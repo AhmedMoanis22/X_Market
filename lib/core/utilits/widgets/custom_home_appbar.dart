@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:x_market/features/sign_up/bussiness_logic/progress_indecator.dart';
 
-
 class CustomHomeAppbar extends StatelessWidget implements PreferredSizeWidget {
   final Color? backgroundColor;
   final Widget? leading;
@@ -26,27 +25,31 @@ class CustomHomeAppbar extends StatelessWidget implements PreferredSizeWidget {
       automaticallyImplyLeading: false,
       elevation: 0,
       leading: leading,
-      title: title,
-      centerTitle: true,
-      actions: [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.w),
-          child: GestureDetector(
+      centerTitle: false,
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          if (title != null)
+            Expanded(
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: title!,
+              ),
+            ),
+          SizedBox(width: 16.w),
+          GestureDetector(
             onTap: () {
               Navigator.pop(context);
               context.read<ProgressIndicatorCubit>().previousStep();
             },
-            child: Container(
-              padding: const EdgeInsets.all(4),
-              child: SvgPicture.asset(
-                'assets/svg/arrow-square-right.svg',
-                width: 24.w,
-                height: 24.h,
-              ),
+            child: SvgPicture.asset(
+              'assets/svg/arrow-square-right.svg',
+              width: 24.w,
+              height: 24.h,
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

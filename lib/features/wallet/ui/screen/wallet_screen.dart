@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:x_market/core/theme/colors.dart';
 import 'package:x_market/core/utilits/widgets/transaction_text.dart';
-import 'package:x_market/features/wallet/ui/screen/transactions_screen.dart';
+
+import '../../../../core/routing/app_routes_name.dart';
 
 class WalletScreen extends StatefulWidget {
   const WalletScreen({super.key});
@@ -162,30 +164,9 @@ class _WalletScreenState extends State<WalletScreen> {
                 ),
               ),
               // مسافة مرنة
-              const Spacer(),
-              // صورة فارغة ونص
-              Column(
-                children: [
-                  SizedBox(
-                    height: screenHeight * 0.13,
-                    child: Image.asset('assets/images/emptyInbox.png'),
-                  ),
-                  const SizedBox(height: 10),
-                  const Text(
-                    'معندكش أي معاملات جديدة حاليًا',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: AppColors.gray,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-              // مسافة مرنة
-              const Spacer(),
-              // أحدث المعاملات في الأسفل
+              SizedBox(height: screenHeight * 0.025),
               Padding(
-                padding: EdgeInsets.only(bottom: screenHeight * 0.025),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
@@ -201,34 +182,28 @@ class _WalletScreenState extends State<WalletScreen> {
                             borderRadius: BorderRadius.circular(25),
                           ),
                           alignment: Alignment.center,
-                          child: const Text(
-                            'عرض الكل',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14,
+                          child: GestureDetector(
+                            onTap: () {
+                              Get.toNamed(AppRoutesName.transactionScreen);
+                            },
+                            child: const Text(
+                              'عرض الكل',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
+                              ),
                             ),
                           ),
                         ),
                         const Spacer(),
-                        TextButton(
-                          onPressed: () {
-                            navigator?.push(
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    const TransactionsScreen(),
-                              ),
-                            );
-                          },
-                          child: const Text(
-                            'أحدث المعاملات',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 18,
-                              fontFamily: 'IBMPLEXSANSARABICBold',
-                            ),
+                        const Text(
+                          'أحدث المعاملات',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18,
+                            fontFamily: 'IBMPLEXSANSARABICBold',
                           ),
                         ),
-                        const SizedBox(width: 10),
                         SvgPicture.asset(
                           'assets/icons/frame.svg',
                         ),
@@ -256,6 +231,28 @@ class _WalletScreenState extends State<WalletScreen> {
                   ],
                 ),
               ),
+
+              // صورة فارغة ونص
+              Column(
+                children: [
+                  SizedBox(
+                    height: screenHeight * 0.13,
+                    child: Image.asset('assets/images/emptyInbox.png'),
+                  ),
+                  const SizedBox(height: 10),
+                  const Text(
+                    'معندكش أي معاملات جديدة حاليًا',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: AppColors.gray,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+              // مسافة مرنة
+              const Spacer(),
+              // أحدث المعاملات في الأسفل
             ],
           ),
         ),

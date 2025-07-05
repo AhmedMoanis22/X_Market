@@ -29,6 +29,7 @@ import '../../features/sign_up/view/screen/profile_customization/ui/screen/profi
 import '../../features/sign_up/view/screen/profile_customization/ui/screen/profile_customization_result_details.dart';
 import '../../features/sign_up/view/screen/profile_customization/ui/screen/profile_customization_screen.dart';
 import '../../features/sign_up/view/screen/terms_and_conditions/terms_and_conditions_screen.dart';
+import '../../features/wallet/ui/screen/transactions_screen.dart';
 import 'app_routes_name.dart';
 
 List<GetPage<dynamic>>? routes = [
@@ -124,8 +125,12 @@ List<GetPage<dynamic>>? routes = [
     name: AppRoutesName.walletScreen,
     page: () => const WalletScreen(),
   ),
-    GetPage(
+  GetPage(
     name: AppRoutesName.paymentScreen,
     page: () => const PaymentScreen(),
+  ),
+  GetPage(
+    name: AppRoutesName.transactionScreen,
+    page: () => const TransactionsScreen(),
   ),
 ];

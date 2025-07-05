@@ -7,6 +7,7 @@ Widget buildTextField({
   required String validatorMessage,
   bool? obscureText,
   Widget? prefixIcon,
+  Widget? suffixIcon,
 }) {
   return TextFormField(
     controller: controller,
@@ -17,6 +18,7 @@ Widget buildTextField({
     obscureText: obscureText ?? false,
     decoration: InputDecoration(
       contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+      suffixIcon: suffixIcon,
       prefixIcon: prefixIcon ?? const SizedBox.shrink(),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12.r),
