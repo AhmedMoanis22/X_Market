@@ -20,9 +20,9 @@ class TransactionText extends StatelessWidget {
       onTap: onTap,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
-        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
+        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
         decoration: BoxDecoration(
-          color: selected ? AppColors.primaryGreen : Colors.transparent,
+          color: selected ? AppColors.primaryGreen : const Color.fromRGBO(0, 0, 0, 0),
           borderRadius: BorderRadius.circular(24.r),
         ),
         child: Text(

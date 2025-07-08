@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:x_market/features/sign_up/bussiness_logic/Sign_up/sign_up_cubit.dart';
-
 import 'core/di/dependeny_injection.dart';
 import 'core/routing/app_routes_configurations.dart';
 import 'core/utilits/classes/bloc_observer.dart';
@@ -23,6 +22,7 @@ void main() async {
   await setupGetit();
   runApp(const MyApp());
 }
+// This line is used to remove the native splash screen after the app has loaded.
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

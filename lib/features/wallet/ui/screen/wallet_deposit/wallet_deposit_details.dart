@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../../core/theme/colors.dart';
@@ -34,7 +35,7 @@ class WalletDepositDetails extends StatelessWidget {
         backgroundColor: AppColors.primaryGreen,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 20.0),
         child: Column(
           children: [
             Expanded(
@@ -50,9 +51,7 @@ class WalletDepositDetails extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 15,
-                  ),
+                  SizedBox(height: 20.h),
                   const Align(
                     alignment: Alignment.centerRight,
                     child: Text(
@@ -63,9 +62,7 @@ class WalletDepositDetails extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 15,
-                  ),
+                  SizedBox(height: 20.h),
                   buildTextField(
                     suffixIcon: Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -76,9 +73,7 @@ class WalletDepositDetails extends StatelessWidget {
                     validatorMessage: "يحب ادخال رقم البطاقه",
                     inputFormatters: [CardNumberFormatter()],
                   ),
-                  const SizedBox(
-                    height: 15,
-                  ),
+                  SizedBox(height: 20.h),
                   Row(
                     children: [
                       Expanded(
@@ -92,9 +87,7 @@ class WalletDepositDetails extends StatelessWidget {
                                 fontFamily: 'IBMPLEXSANSARABICSRegular',
                               ),
                             ),
-                            const SizedBox(
-                              height: 10,
-                            ),
+                            SizedBox(height: 10.h),
                             buildTextField(
                               controller: cvv,
                               hint: "3 digits",
@@ -103,8 +96,8 @@ class WalletDepositDetails extends StatelessWidget {
                           ],
                         ),
                       ),
-                      const SizedBox(
-                        width: 10,
+                      SizedBox(
+                        width: 10.h,
                       ),
                       Expanded(
                         child: Column(
@@ -117,8 +110,8 @@ class WalletDepositDetails extends StatelessWidget {
                                 fontFamily: 'IBMPLEXSANSARABICSRegular',
                               ),
                             ),
-                            const SizedBox(
-                              height: 10,
+                            SizedBox(
+                              height: 10.h,
                             ),
                             buildTextField(
                               controller: expireDate,
@@ -131,9 +124,7 @@ class WalletDepositDetails extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 15,
-                  ),
+                    SizedBox(height: 20.h),
                   const Align(
                     alignment: Alignment.centerRight,
                     child: Text(
@@ -144,9 +135,7 @@ class WalletDepositDetails extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 15,
-                  ),
+                    SizedBox(height: 20.h),
                   buildTextField(
                     controller: cardUserName,
                     hint: "الاسم الموجود على البطاقة",

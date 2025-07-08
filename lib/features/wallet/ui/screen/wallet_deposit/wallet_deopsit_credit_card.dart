@@ -68,7 +68,7 @@ class _WalletDeopsitCreditCardState extends State<WalletDeopsitCreditCard> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    SizedBox(height: 40.h),
+                    SizedBox(height: 20.h),
                     const CustomSubHeadText(
                       text: 'اكتب مبلغ الإيداع',
                     ),
@@ -117,7 +117,7 @@ class _WalletDeopsitCreditCardState extends State<WalletDeopsitCreditCard> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 60.h),
+                    SizedBox(height: 20.h),
                     CustomTextButton(
                       onPressed: () {
                         log(amount);
