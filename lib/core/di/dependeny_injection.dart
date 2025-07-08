@@ -4,6 +4,9 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
+import '../../features/home/bussiness_logic/stock_prediction_cubit.dart';
+import '../../features/home/data/data_souce/stock_prediction_data_source.dart';
+import '../../features/home/data/repository/stock_prediction_repository.dart';
 import '../../features/login/bussiness_logic/login_cubit.dart';
 import '../../features/login/data/data_source/login_remote_data_source.dart';
 import '../../features/login/data/repository/login_repository.dart';
@@ -42,4 +45,14 @@ Future<void> setupGetit() async {
       ));
   getIt.registerFactory<SignUpCubit>(
       () => SignUpCubit(signUpRepository: getIt()));
+  /*home*/
+  getIt.registerLazySingleton<StockPredictionDataSource>(
+      () => StockPredictionDataSource(apiServices: getIt()));
+  getIt.registerLazySingleton<StockPredictionRepository>(
+      () => StockPredictionRepository(
+            stockPredictionDataSource: getIt(),
+            networkInfo: getIt(),
+          ));
+  getIt.registerFactory<StockPredictionCubit>(
+      () => StockPredictionCubit(stockPredictionRepository: getIt()));
 }

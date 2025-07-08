@@ -5,11 +5,14 @@ import '../../../../../core/theme/colors.dart';
 import '../../../../../core/utilits/widgets/app_text_field.dart';
 import '../../../../../core/utilits/widgets/custom_home_appbar.dart';
 import '../../../../../core/utilits/widgets/custom_text_button.dart';
+import '../../../../../core/utilits/widgets/input_formatters.dart';
+import '../../../data/model/transction_model.dart';
 import 'wallet_deposit_checkout.dart';
 
 class WalletDepositDetails extends StatelessWidget {
-  WalletDepositDetails({super.key, required this.title});
+  WalletDepositDetails({super.key, required this.title, required this.amount});
   final String title;
+  final String amount;
 
   final TextEditingController cardNumber = TextEditingController();
   final TextEditingController expireDate = TextEditingController();
@@ -66,13 +69,12 @@ class WalletDepositDetails extends StatelessWidget {
                   buildTextField(
                     suffixIcon: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: SvgPicture.asset(
-                        'assets/icons/card.svg',
-                      ),
+                      child: SvgPicture.asset('assets/icons/card.svg'),
                     ),
                     controller: cardNumber,
                     hint: "0000 0000 0000 0000",
                     validatorMessage: "يحب ادخال رقم البطاقه",
+                    inputFormatters: [CardNumberFormatter()],
                   ),
                   const SizedBox(
                     height: 15,
@@ -122,6 +124,7 @@ class WalletDepositDetails extends StatelessWidget {
                               controller: expireDate,
                               hint: "MM/YY",
                               validatorMessage: "يحب ادخال تاريخ البطاقه",
+                              inputFormatters: [ExpiryDateFormatter()],
                             ),
                           ],
                         ),
@@ -155,11 +158,22 @@ class WalletDepositDetails extends StatelessWidget {
             CustomTextButton(
               onPressed: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => WalletDepositCheckout(
-                              title: title,
-                            )));
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => WalletDepositCheckout(
+                      title: title,
+                      amount: amount,
+                      cvv: cvv.text,
+                      cardHolderName: cardUserName.text,
+                      cardNumber: cardNumber.text,
+                      expiryDate: expireDate.text,
+                    ),
+                  ),
+                ).then((result) {
+                  if (result != null && result is TransactionModel) {
+                    Navigator.pop(context, result); // 👈 رجّع النتيجة للأب
+                  }
+                });
               },
               text: 'حفظ',
             ),

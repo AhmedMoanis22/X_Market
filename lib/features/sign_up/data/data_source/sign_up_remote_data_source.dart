@@ -19,7 +19,7 @@ class SignUpRemoteDataSource {
     required String confirmPasscode,
   }) async {
     final response = await apiServices.postData(
-      urll: ApiConstance.signup,
+      urll: '${ApiConstance.baseUrl}${ApiConstance.signup}',
       data: {
         'fullname': fullname,
         'email': email,

@@ -21,6 +21,24 @@ class BottomNavBarScreen extends StatelessWidget {
             return Directionality(
               textDirection: TextDirection.rtl,
               child: Scaffold(
+                floatingActionButton: Padding(
+                  padding: const EdgeInsets.only(left: 25.0, bottom: 100.0),
+                  child: Align(
+                    alignment: Alignment.bottomLeft,
+                    child: FloatingActionButton(
+                      backgroundColor: Colors.white,
+                      onPressed: () {},
+                      child: SvgPicture.asset(
+                        'assets/icons/nouh.svg',
+                        height: 80,
+                        width: 80,
+                      ),
+                    ),
+                  ),
+                ),
+                floatingActionButtonLocation:
+                    FloatingActionButtonLocation.startDocked,
+                backgroundColor: Colors.white,
                 extendBody: true,
                 body: cubit.screen[cubit.currentIndex],
                 bottomNavigationBar: CurvedNavigationBar(

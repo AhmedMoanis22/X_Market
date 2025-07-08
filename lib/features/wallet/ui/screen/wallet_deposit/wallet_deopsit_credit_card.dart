@@ -1,10 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:x_market/core/utilits/widgets/custom_text_button.dart';
 
-import '../../../../../../../../core/theme/colors.dart';
 import '../../../../../../../../core/utilits/widgets/custom_sub_head_text.dart';
 import '../../../../../core/utilits/widgets/custom_home_appbar.dart';
+import '../../../data/model/transction_model.dart';
 import 'wallet_deposit_details.dart';
 
 class WalletDeopsitCreditCard extends StatefulWidget {
@@ -58,7 +60,6 @@ class _WalletDeopsitCreditCardState extends State<WalletDeopsitCreditCard> {
             fontFamily: 'IBMPLEXSANSARABICBold',
           ),
         ),
-        backgroundColor: AppColors.primaryGreen,
       ),
       body: Column(
         children: [
@@ -119,12 +120,21 @@ class _WalletDeopsitCreditCardState extends State<WalletDeopsitCreditCard> {
                     SizedBox(height: 60.h),
                     CustomTextButton(
                       onPressed: () {
+                        log(amount);
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => WalletDepositDetails(
-                                      title: widget.title,
-                                    )));
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => WalletDepositDetails(
+                              title: widget.title,
+                              amount: amount,
+                            ),
+                          ),
+                        ).then((result) {
+                          if (result != null && result is TransactionModel) {
+                            Navigator.pop(
+                                context, result); // 👈 رجّع النتيجة للأب
+                          }
+                        });
                       },
                       text: 'تأكيد',
                       width: 320.w,

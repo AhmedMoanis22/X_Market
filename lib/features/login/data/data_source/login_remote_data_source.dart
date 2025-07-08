@@ -13,7 +13,7 @@ class LoginRemoteDataSource {
     required String password,
   }) async {
     final response = await apiServices.postData(
-      urll: ApiConstance.login,
+      urll: '${ApiConstance.baseUrl}${ApiConstance.login}',
       data: {
         'email': email,
         'password': password,

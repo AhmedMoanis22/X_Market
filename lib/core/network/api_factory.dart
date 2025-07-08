@@ -1,8 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-import 'api_constant.dart';
-
 class DioFactory {
   /// private constructor as I don't want to allow creating an instance of this class
   DioFactory._();
@@ -38,7 +36,7 @@ class DioFactory {
   static void init() {
     dio = Dio(
       BaseOptions(
-          baseUrl: ApiConstance.baseUrl,
+          baseUrl: '',
           receiveDataWhenStatusError: true,
           connectTimeout: const Duration(seconds: 300),
           receiveTimeout: const Duration(seconds: 300),

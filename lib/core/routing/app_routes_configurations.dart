@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:x_market/features/bottom_nav_bar/ui/screen/bottom_nav_bar_screen.dart';
+import 'package:x_market/features/explore/ui/screen/stock_profile_chart.dart';
 import 'package:x_market/features/forget_password/ui/screen/password_repeat_screen.dart';
 import 'package:x_market/features/forget_password/ui/screen/verify_password_screen.dart';
-import 'package:x_market/features/home_screen.dart';
 import 'package:x_market/features/sign_up/view/screen/Sign_up_with_country/sign_up_with_country.dart';
 import 'package:x_market/features/sign_up/view/screen/Sign_up_with_national_id_and_face_recognation/camera_national_id_screen.dart';
 import 'package:x_market/features/sign_up/view/screen/pin_code/confirm_pincode_screen.dart';
@@ -12,6 +12,7 @@ import 'package:x_market/features/sign_up/view/screen/profile_customization/ui/s
 import 'package:x_market/features/wallet/ui/screen/payment_screen.dart';
 import 'package:x_market/features/wallet/ui/screen/wallet_screen.dart';
 
+import '../../features/explore/ui/screen/stocks_screen.dart';
 import '../../features/forget_password/ui/screen/forgot_password_screen.dart';
 import '../../features/login/view/screen/login_screen.dart';
 import '../../features/onboarding/view/screen/onborading_screen.dart';
@@ -51,7 +52,6 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
       name: AppRoutesName.confirm_pincode_screen,
       page: () => const ConfirmPincodeScreen()),
-  GetPage(name: AppRoutesName.home, page: () => const HomeScreen()),
   GetPage(
     name: AppRoutesName.creaet_password,
     page: () => CreatePasswordScreen(),
@@ -132,5 +132,13 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
     name: AppRoutesName.transactionScreen,
     page: () => const TransactionsScreen(),
+  ),
+  GetPage(
+    name: AppRoutesName.stockPrediction,
+    page: () => const StocksScreen(),
+  ),
+  GetPage(
+    name: AppRoutesName.stocksProfileChart,
+    page: () => const StockProfileChart(),
   ),
 ];

@@ -2,6 +2,8 @@ class ApiConstance {
   static const String baseUrl = 'http://192.168.1.6:8080/api/v1/';
   static const String login = 'auth/signin';
   static const String signup = 'auth/signup';
+  static const String stockPrediction =
+      'https://forecastsa070369.blob.core.windows.net/forecast-predictions/next_friday_predictions.json';
 }
 
 class ApiErrors {

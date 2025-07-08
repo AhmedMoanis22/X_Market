@@ -49,4 +49,8 @@ class AppRoutesName {
   static const String walletScreen = '/walletScreen';
   static const String paymentScreen = '/paymentScreen';
   static const String transactionScreen = '/transactionScreen';
+
+  //explore
+  static const String stockPrediction = '/stockPrediction';
+  static const String stocksProfileChart = '/stocksProfileChart';
 }

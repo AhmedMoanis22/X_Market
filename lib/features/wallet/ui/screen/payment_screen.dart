@@ -5,6 +5,8 @@ import 'package:x_market/core/utilits/widgets/custom_home_appbar.dart';
 import 'package:x_market/features/wallet/ui/screen/wallet_deposit/wallet_deopsit_credit_card.dart';
 import 'package:x_market/features/wallet/ui/widget/custom_payment_method.dart';
 
+import '../../data/model/transction_model.dart';
+
 class PaymentScreen extends StatelessWidget {
   const PaymentScreen({super.key});
 
@@ -58,7 +60,11 @@ class PaymentScreen extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => const WalletDeopsitCreditCard(
-                            title: 'فودافون كاش')));
+                            title: 'فودافون كاش'))).then((result) {
+                  if (result != null && result is TransactionModel) {
+                    Navigator.pop(context, result); // 👈 رجّع النتيجة للأب
+                  }
+                });
               },
             ),
             SizedBox(
@@ -73,7 +79,11 @@ class PaymentScreen extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => const WalletDeopsitCreditCard(
-                            title: 'بطاقات الخصم المباشر')));
+                            title: 'بطاقات الخصم المباشر'))).then((result) {
+                  if (result != null && result is TransactionModel) {
+                    Navigator.pop(context, result); // 👈 رجّع النتيجة للأب
+                  }
+                });
               },
             ),
             SizedBox(

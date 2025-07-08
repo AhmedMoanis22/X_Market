@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Widget buildTextField({
@@ -8,10 +9,13 @@ Widget buildTextField({
   bool? obscureText,
   Widget? prefixIcon,
   Widget? suffixIcon,
+  List<TextInputFormatter>? inputFormatters,
 }) {
   return TextFormField(
     controller: controller,
+    inputFormatters: inputFormatters, // 👈 استخدمها هنا
     textAlign: TextAlign.right,
+
     style: const TextStyle(
       fontFamily: 'IBMPLEXSANSARABICBold',
     ),
