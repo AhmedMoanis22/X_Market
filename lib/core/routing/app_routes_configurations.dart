@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 import 'package:x_market/features/bottom_nav_bar/ui/screen/bottom_nav_bar_screen.dart';
+import 'package:x_market/features/explore/ui/screen/buy_stock.dart';
+import 'package:x_market/features/explore/ui/screen/sell_stock_cash.dart';
 import 'package:x_market/features/explore/ui/screen/stock_profile_chart.dart';
 import 'package:x_market/features/forget_password/ui/screen/password_repeat_screen.dart';
 import 'package:x_market/features/forget_password/ui/screen/verify_password_screen.dart';
@@ -32,7 +34,8 @@ import '../../features/sign_up/view/screen/profile_customization/ui/screen/profi
 import '../../features/sign_up/view/screen/terms_and_conditions/terms_and_conditions_screen.dart';
 import '../../features/wallet/ui/screen/transactions_screen.dart';
 import 'app_routes_name.dart';
-
+import 'package:x_market/features/explore/ui/screen/details/sell_stock_details.dart';
+import 'package:x_market/features/explore/ui/screen/details/sell_stock_checkbox.dart';
 List<GetPage<dynamic>>? routes = [
   GetPage(
     name: AppRoutesName.welcomeScreen,
@@ -141,4 +144,21 @@ List<GetPage<dynamic>>? routes = [
     name: AppRoutesName.stocksProfileChart,
     page: () => const StockProfileChart(),
   ),
+  GetPage(
+    name: AppRoutesName.buyStock,
+    page: () => const BuyStock(),
+  ),
+  GetPage(
+    name: AppRoutesName.sellStockCash,
+    page: () => const  SellStockCash(),
+  ),
+  GetPage(
+    name: AppRoutesName.sellstockdetails,
+    page: () => const SellStockDetails(),
+  ),
+  GetPage(
+    name: AppRoutesName.sellstockcheckbox,
+    page: () => const SellStockCheckbox(),
+  ),
+
 ];

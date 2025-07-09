@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:x_market/core/routing/app_routes_name.dart';
 import 'package:x_market/core/theme/colors.dart';
 
 import '../../../../core/utilits/widgets/custom_text_button.dart';
@@ -216,13 +217,17 @@ class _StockProfileChartState extends State<StockProfileChart> {
               const Spacer(),
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 CustomTextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.toNamed(AppRoutesName.buyStock);
+                  },
                   text: 'شراء',
                   width: 150,
                 ),
                 const SizedBox(width: 16),
                 CustomTextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.toNamed(AppRoutesName.sellStockCash);
+                  },
                   text: 'بيع',
                   width: 150,
                   buttonColor: Colors.white,

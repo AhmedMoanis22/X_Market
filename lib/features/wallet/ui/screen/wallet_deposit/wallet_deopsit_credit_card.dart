@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:x_market/core/theme/colors.dart';
 import 'package:x_market/core/utilits/widgets/custom_text_button.dart';
 
 import '../../../../../../../../core/utilits/widgets/custom_sub_head_text.dart';
@@ -51,15 +52,16 @@ class _WalletDeopsitCreditCardState extends State<WalletDeopsitCreditCard> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: CustomHomeAppbar(
+      appBar: const CustomHomeAppbar(
         title: Text(
-          widget.title,
-          style: const TextStyle(
+          'بطاقات الخصم المباشر',
+          style: TextStyle(
             color: Colors.white,
             fontSize: 20,
             fontFamily: 'IBMPLEXSANSARABICBold',
           ),
         ),
+        backgroundColor: AppColors.primaryGreen,
       ),
       body: Column(
         children: [

@@ -11,7 +11,7 @@ class CustomSubHeadText extends StatelessWidget {
     return Text(
       text,
       style: const TextStyle(
-          fontSize: 16,
+          fontSize: 18,
           fontFamily: 'IBMPLEXSANSARABICRegular',
           color: AppColors.gray),
       textAlign: TextAlign.right,

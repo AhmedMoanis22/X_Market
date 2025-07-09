@@ -53,4 +53,8 @@ class AppRoutesName {
   //explore
   static const String stockPrediction = '/stockPrediction';
   static const String stocksProfileChart = '/stocksProfileChart';
+  static const String buyStock = '/buyStock';
+  static const String sellStockCash = '/sellStockCash';
+  static const String sellstockdetails = '/sellstockdetails';
+  static const String sellstockcheckbox = '/sellstockcheckbox';
 }
