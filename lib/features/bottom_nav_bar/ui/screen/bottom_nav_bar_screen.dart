@@ -6,6 +6,8 @@ import 'package:x_market/core/theme/colors.dart';
 import 'package:x_market/features/bottom_nav_bar/logic/bottom_nav_bar_cubit.dart';
 import 'package:x_market/features/bottom_nav_bar/logic/bottom_nav_bar_state.dart';
 
+import '../../../chat_bot/ui/screen/chat_bot.dart';
+
 class BottomNavBarScreen extends StatelessWidget {
   const BottomNavBarScreen({super.key});
 
@@ -27,7 +29,17 @@ class BottomNavBarScreen extends StatelessWidget {
                     alignment: Alignment.bottomLeft,
                     child: FloatingActionButton(
                       backgroundColor: Colors.white,
-                      onPressed: () {},
+                      onPressed: () {
+                        showModalBottomSheet(
+                          context: context,
+                          isScrollControlled: true,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.vertical(top: Radius.circular(16)),
+                          ),
+                          builder: (context) => const ChatBot(),
+                        );
+                      },
                       child: SvgPicture.asset(
                         'assets/icons/nouh.svg',
                         height: 80,
